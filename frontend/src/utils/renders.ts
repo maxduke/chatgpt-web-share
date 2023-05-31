@@ -17,7 +17,7 @@ const modelNameMap = {
   'gpt-4-mobile': t('commons.gpt4MobileModel'),
   'gpt-4-browsing': t('commons.gpt4BrowsingModel'),
   'gpt-4-plugins': t('commons.gpt4PluginsModel'),
-  'gpt-3-mobile': t('commons.gpt3MobileModel'),
+  'text-davinci-002-render-sha-mobile': t('commons.gpt3MobileModel'),
 };
 
 const getModelNameTrans = (model_name: keyof typeof modelNameMap) => {
