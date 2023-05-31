@@ -80,7 +80,7 @@ function makeDataset(askRecords: AskRecord[]) {
   const gpt4Records: AskRecord[] = [];
 
   askRecords.forEach((record) => {
-    if (record[0][1] === 'gpt-4' || record[0][1] === 'gpt-4-mobile') {
+    if (record[0][1] === 'gpt-4' || record[0][1] === 'gpt-4-mobile' || record[0][1] === 'gpt-4-browsing' || record[0][1] === 'gpt-4-plugins') {
       gpt4Records.push(record);
     } else {
       otherRecords.push(record);

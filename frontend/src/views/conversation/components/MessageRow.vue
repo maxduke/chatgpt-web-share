@@ -123,7 +123,7 @@ const props = defineProps<{
 }>();
 
 const isGpt4 = computed(() => {
-  return props.message.model_slug == 'gpt-4' || props.message.model_slug == 'gpt-4-mobile';
+  return props.message.model_slug == 'gpt-4' || props.message.model_slug == 'gpt-4-mobile' || props.message.model_slug == 'gpt-4-browsing' || props.message.model_slug == 'gpt-4-plugins';
 });
 
 const backgroundColor = computed(() => {

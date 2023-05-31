@@ -15,6 +15,9 @@ const modelNameMap = {
   'text-davinci-002-render-paid': t('commons.paidModel'),
   'gpt-4': t('commons.gpt4Model'),
   'gpt-4-mobile': t('commons.gpt4MobileModel'),
+  'gpt-4-browsing': t('commons.gpt4BrowsingModel'),
+  'gpt-4-plugins': t('commons.gpt4PluginsModel'),
+  'gpt-3-mobile': t('commons.gpt3MobileModel'),
 };
 
 const getModelNameTrans = (model_name: keyof typeof modelNameMap) => {
@@ -100,7 +103,10 @@ const popupInputDialog = (title: string, placeholder: string, callback: (inp: st
 
 const getAvailableModelOptions = (): SelectOption[] => {
   const userStore = useUserStore();
-  const options = [{ label: t('commons.shaModel'), value: 'text-davinci-002-render-sha' }];
+  const options = [
+    { label: t('commons.shaModel'), value: 'text-davinci-002-render-sha' },
+    { label: t('commons.gpt3MobileModel'), value: 'gpt3_mobile' }
+  ];
   if (userStore.user?.can_use_paid)
     options.push({
       label: t('commons.paidModel'),
@@ -109,6 +115,9 @@ const getAvailableModelOptions = (): SelectOption[] => {
   if (userStore.user?.can_use_gpt4) {
     options.push({ label: t('commons.gpt4Model'), value: 'gpt-4' });
     options.push({ label: t('commons.gpt4MobileModel'), value: 'gpt-4-mobile' });
+    // not support yet
+    //options.push({ label: t('commons.gpt4BrowsingModel'), value: 'gpt-4-browsing' });
+    //options.push({ label: t('commons.gpt4PluginsModel'), value: 'gpt-4-plugins' });
   };
   return options;
 };
