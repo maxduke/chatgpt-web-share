@@ -6,26 +6,26 @@ from typing import Literal, Optional, Annotated, Union
 from pydantic import BaseModel, root_validator, validator, Field
 from strenum import StrEnum
 
-from api.enums import ChatSourceTypes, RevChatModels, ApiChatModels
-from api.models.doc import RevChatMessage, ApiChatMessage
+from api.enums import ChatSourceTypes, OpenaiWebChatModels, OpenaiApiChatModels
+from api.models.doc import OpenaiWebChatMessage, OpenaiApiChatMessage
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
 
-def _validate_model(_type: ChatSourceTypes, model: str | None):
+def _validate_model(_source: ChatSourceTypes, model: str | None):
     if model is None:
         return None
-    if _type == ChatSourceTypes.rev and model in list(RevChatModels):
-        return RevChatModels(model)
-    elif _type == ChatSourceTypes.api and model in list(ApiChatModels):
-        return ApiChatModels(model)
+    if _source == ChatSourceTypes.openai_web and model in list(OpenaiWebChatModels):
+        return OpenaiWebChatModels(model)
+    elif _source == ChatSourceTypes.openai_api and model in list(OpenaiApiChatModels):
+        return OpenaiApiChatModels(model)
     else:
-        logger.warning(f"unknown model: {model} for type {_type}")
+        logger.warning(f"unknown model: {model} for type {_source}")
 
 
 class AskRequest(BaseModel):
-    type: ChatSourceTypes
+    source: ChatSourceTypes
     model: str
     new_conversation: bool
     new_title: Optional[str] = None
@@ -42,7 +42,7 @@ class AskRequest(BaseModel):
             assert values["conversation_id"] is not None, "must specify conversation_id"
             assert values["parent"] is not None, "must specify parent"
             assert values["new_title"] is None, "can not specify new_title"
-        _validate_model(values["type"], values["model"])
+        _validate_model(values["source"], values["model"])
         return values
 
 
@@ -57,13 +57,14 @@ class AskResponse(BaseModel):
     type: AskResponseType
     tip: str = None
     conversation_id: uuid.UUID = None
-    message: Optional[Annotated[Union[RevChatMessage, ApiChatMessage], Field(discriminator='type')]] = None
+    message: Optional[
+        Annotated[Union[OpenaiWebChatMessage, OpenaiApiChatMessage], Field(discriminator='source')]] = None
     error_detail: str = None
 
 
 class BaseConversationSchema(BaseModel):
     id: int = -1
-    type: ChatSourceTypes
+    source: ChatSourceTypes
     conversation_id: uuid.UUID | None
     title: str | None
     user_id: int | None
@@ -77,13 +78,13 @@ class BaseConversationSchema(BaseModel):
 
     @validator("current_model")
     def validate_current_model(cls, v, values):
-        _validate_model(values["type"], v)
+        _validate_model(values["source"], v)
         return v
 
 
-class RevConversationSchema(BaseConversationSchema):
-    type: Literal['rev'] = 'rev'
+class OpenaiWebConversationSchema(BaseConversationSchema):
+    source: Literal["openai_web"]
 
 
-class ApiConversationSchema(BaseConversationSchema):
-    type: Literal['api'] = 'api'
+class OpenaiApiConversationSchema(BaseConversationSchema):
+    source: Literal["openai_api"]

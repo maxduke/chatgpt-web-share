@@ -17,7 +17,7 @@ from api.conf import Config
 import api.globals as g
 
 from api.database import create_db_and_tables, get_async_session_context, get_user_db_context, init_mongodb
-from api.enums import RevChatStatus
+from api.enums import OpenaiWebChatStatus
 from api.exceptions import SelfDefinedException, UserAlreadyExists
 from api.middlewares import AccessLoggerMiddleware, StatisticsMiddleware
 from api.models.db import User
@@ -114,8 +114,8 @@ async def on_startup():
         r = await session.execute(select(User))
         results = r.scalars().all()
         for user in results:
-            user.rev_chat_status = RevChatStatus.idling
-            session.add(user)
+            user.setting.openai_web_chat_status = OpenaiWebChatStatus.idling
+            session.add(user.setting)
         await session.commit()
 
     logger.info(
