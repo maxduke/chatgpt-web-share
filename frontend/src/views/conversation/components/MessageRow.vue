@@ -1,57 +1,26 @@
 <template>
   <div class="flex flex-row lt-md:flex-col py-3 lt-md:py-2 px-4 relative" :style="{ backgroundColor: backgroundColor }">
     <div class="w-10 lt-md:ml-0 ml-2 mt-3">
-      <n-avatar v-if="props.message.role == 'user'" size="small">
+      <n-avatar v-if="lastMessage?.role == 'user'" size="small">
         <n-icon>
           <PersonFilled />
         </n-icon>
       </n-avatar>
-      <ChatGPTAvatar v-show="!shrinkMessage" v-else size="small" :model="props.message.model" />
+      <ChatGPTAvatar v-else size="small" :model="lastMessage?.model" />
     </div>
     <div class="lt-md:mx-0 mx-4 w-full">
-      <div v-if="shrinkMessage">
-        <n-collapse class="mb-2">
-          <n-collapse-item :title="t('commons.expandResult')">
-            <div class="whitespace-pre-wrap">
-              {{ content }}
-            </div>
-          </n-collapse-item>
-        </n-collapse>
+      <div v-for="(item, i) in displayItems" :key="i">
+        <div v-if="item.type == 'text'">
+          <MessageRowTextDisplay :messages="item.messages" />
+        </div>
+        <div v-else-if="item.type == 'browser'">
+          <MessageRowBrowserDisplay :messages="item.messages" />
+        </div>
+        <div v-else-if="item.type == 'plugin'">
+          <MessageRowPluginDisplay :messages="item.messages" />
+        </div>
       </div>
-      <div v-else-if="showRawContent" class="my-3 w-full text-gray-500">
-        {{ content }}
-      </div>
-      <div v-else-if="isPluginMessage" class="my-3">
-        <n-alert
-          :title="t('commons.invoking_plugin', [revMetadata?.recipient])"
-          type="info"
-          class="whitespace-pre-wrap"
-        >
-          {{ content }}
-        </n-alert>
-      </div>
-      <div v-else-if="isPluginResult" class="my-3">
-        <n-alert :title="revMetadata?.invoked_plugin?.namespace" type="success" class="whitespace-pre-wrap">
-          {{ content }}
-        </n-alert>
-      </div>
-      <!-- 按 markdown 渲染内容 -->
-      <div
-        v-else-if="!showRawContent && !renderPureText"
-        ref="contentRef"
-        class="message-content w-full"
-        v-html="renderedContent"
-      />
-      <!-- 用户回复不渲染为markdown -->
-      <div
-        v-else-if="!showRawContent && renderPureText"
-        ref="contentRef"
-        class="message-content w-full whitespace-pre-wrap py-4"
-      >
-        {{ renderedContent }}
-      </div>
-
-      <div v-if="!shrinkMessage" class="hide-in-print">
+      <div class="hide-in-print">
         <n-button
           text
           ghost
@@ -68,9 +37,9 @@
           text
           ghost
           size="tiny"
-          :type="showRawContent ? 'success' : 'tertiary'"
+          :type="showRawMessage ? 'success' : 'tertiary'"
           class="mt-2 -ml-2 absolute lt-sm:bottom-3 lt-sm:right-9 bottom-2 right-6"
-          @click="toggleShowRawContent"
+          @click="toggleShowRawMessage"
         >
           <n-icon>
             <CodeSlash />
@@ -91,206 +60,140 @@ import { useI18n } from 'vue-i18n';
 
 import ChatGPTAvatar from '@/components/ChatGPTAvatar.vue';
 import { useAppStore } from '@/store';
-import { BaseChatMessage, OpenaiApiChatMessageMetadata, OpenaiWebChatMessageMetadata } from '@/types/schema';
-import { getContentRawText } from '@/utils/chat';
-import md from '@/utils/markdown';
+import { BaseChatMessage, OpenaiWebChatMessageMetadata } from '@/types/schema';
+import { splitMessagesInGroup } from '@/utils/chat';
 import { Message } from '@/utils/tips';
-// let md: any;
-// let mdLoaded = ref(false);
 
-// onMounted(() => {
-//   import("@/utils/markdown").then((module) => {
-//     md = module.default;
-//     mdLoaded.value = true;
-//   });
-// });
+import MessageRowBrowserDisplay from './MessageRowBrowserDisplay.vue';
+import MessageRowPluginDisplay from './MessageRowPluginDisplay.vue';
+import MessageRowTextDisplay from './MessageRowTextDisplay.vue';
 
 const { t } = useI18n();
-const appStore = useAppStore();
 
 const themeVars = useThemeVars();
 
-let observer = null;
-
-const contentRef = ref<HTMLDivElement>();
-const showRawContent = ref(false);
+const showRawMessage = ref(false); // 显示原始消息
 
 const props = defineProps<{
-  message: BaseChatMessage;
+  messages: BaseChatMessage[];
 }>();
 
-const shrinkMessage = computed(() => {
-  if (props.message.metadata && (props.message.metadata as any).weight != undefined) {
-    return (props.message.metadata as any).weight == 0;
-  }
-  return false;
+const lastMessage = computed<BaseChatMessage | null>(() => {
+  if (props.messages.length == 0) return null;
+  else return props.messages[props.messages.length - 1];
 });
 
-const revMetadata = computed<OpenaiWebChatMessageMetadata | null>(() => {
-  if (props.message.source == 'openai_web') {
-    return props.message.metadata as OpenaiWebChatMessageMetadata;
-  }
-  return null;
-});
+type DisplayItemType = 'text' | 'browser' | 'plugin' | null;
 
-const isPluginMessage = computed(() => {
-  return revMetadata.value && revMetadata.value.recipient && revMetadata.value.recipient != 'all';
-});
-
-const isPluginResult = computed(() => {
-  return revMetadata.value && revMetadata.value.invoked_plugin != null;
-});
-
-const renderPureText = computed(() => {
-  return appStore.preference.renderUserMessageInMd === false && props.message.role == 'user';
-});
-
-const toggleShowRawContent = () => {
-  showRawContent.value = !showRawContent.value;
+type DisplayItem = {
+  type: DisplayItemType;
+  messages: BaseChatMessage[];
 };
 
+const messageGroups = computed<BaseChatMessage[][]>(() => {
+  return splitMessagesInGroup(props.messages);
+});
+
+const displayItems = computed<DisplayItem[]>(() => {
+  const result = [] as DisplayItem[];
+  for (const group of messageGroups.value) {
+    let displayType: DisplayItemType | null = null;
+    if (group[0].source == 'openai_api') {
+      result.push({
+        type: 'text',
+        messages: group,
+      });
+      continue;
+    }
+    if (group[0].role == 'user') {
+      if (typeof group[0].content == 'string' || group[0].content?.content_type == 'text')
+        result.push({
+          type: 'text',
+          messages: group,
+        });
+      continue;
+    }
+    if (typeof group[0].content == 'string') {
+      if (group[0].id.startsWith('temp_')) {
+        result.push({
+          type: 'text',
+          messages: group,
+        });
+      } else {
+        console.error('string content mixed in non-user group', group);
+      }
+      continue;
+    }
+    if (group[0].content?.content_type == 'text') {
+      const metadata = group[0].metadata as OpenaiWebChatMessageMetadata;
+      if (metadata.recipient == 'all' && group[0].role == 'assistant') {
+        result.push({
+          type: 'text',
+          messages: group,
+        });
+        continue;
+      }
+    }
+    // 简单检查 group 的一致性
+    if (group[0].role == 'user') {
+      console.error('user role has non-text content', group);
+      continue;
+    }
+    for (const message of group) {
+      if (
+        message.source !== 'openai_web' ||
+        typeof message.content == 'string' ||
+        message.content?.content_type === 'text'
+      ) {
+        console.error('wrong message mixed in non-text content group', group);
+        continue;
+      }
+    }
+    // 辨认当前 group 的类型
+    for (const message of group) {
+      console.log('try to find message\'s type', message);
+      if (message.role == 'assistant' && message.model == 'gpt_4_plugins') {
+        displayType = 'plugin';
+        break;
+      }
+      if (message.role == 'assistant' && message.model == 'gpt_4_browsing') {
+        displayType = 'browser';
+        break;
+      }
+    }
+
+    if (!displayType) console.error('cannot find display type for group', group);
+    result.push({
+      type: displayType,
+      messages: group,
+    });
+  }
+  return result;
+});
+
 const backgroundColor = computed(() => {
-  if (props.message.role == 'user') {
+  if (lastMessage.value?.role == 'user') {
     return themeVars.value.bodyColor;
   } else {
     return themeVars.value.actionColor;
   }
 });
 
-const content = computed(() => {
-  const message = props.message;
-  return getContentRawText(message);
-});
-
-const renderedContent = computed(() => {
-  // if (!mdLoaded.value) {
-  //   return '';
-  // }
-  if (renderPureText.value) {
-    return content.value;
-  }
-  const result = md.render(content.value || '');
-  return addButtonsToPreTags(result);
-});
-
-function addButtonsToPreTags(htmlString: string): string {
-  // Parse the HTML string into an Element object.
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(htmlString, 'text/html');
-
-  // Get all the <pre> elements in the document.
-  const preTags = doc.getElementsByTagName('pre');
-
-  // Loop through the <pre> elements and add a <button> to each one.
-  for (let i = 0; i < preTags.length; i++) {
-    const preTag = preTags[i];
-
-    const button = Object.assign(document.createElement('button'), {
-      innerHTML: '',
-      className: 'hljs-copy-button hide-in-print',
-    });
-    button.dataset.copied = 'false';
-    preTag.classList.add('hljs-copy-wrapper');
-
-    // Add a custom proprety to the code block so that the copy button can reference and match its background-color value.
-    preTag.style.setProperty('--hljs-theme-background', window.getComputedStyle(preTag).backgroundColor);
-
-    if (appStore.preference.codeAutoWrap) {
-      preTag.style.cssText += 'white-space: pre-wrap; word-wrap: break-word; word-break: break-all;';
-    }
-
-    preTag.appendChild(button);
-  }
-
-  // Serialize the modified Element object back into a string.
-  const serializer = new XMLSerializer();
-  return serializer.serializeToString(doc.documentElement);
+function toggleShowRawMessage() {
+  showRawMessage.value = !showRawMessage.value;
 }
 
-onMounted(() => {
-  if (!contentRef.value) return;
-  // eslint-disable-next-line no-undef
-  const callback: MutationCallback = (mutations: MutationRecord[]) => {
-    for (const mutation of mutations) {
-      if (mutation.type === 'childList') {
-        bindOnclick();
-      }
-    }
-  };
-  observer = new MutationObserver(callback);
-  observer.observe(contentRef.value, { subtree: true, childList: true });
-  bindOnclick();
-});
-
-const bindOnclick = () => {
-  // 获取模板引用中的所有 pre 元素和其子元素中的 button 元素
-  const preElements = contentRef.value?.querySelectorAll('pre');
-  if (!preElements) return;
-  for (const preElement of preElements as any) {
-    for (const button of preElement.querySelectorAll('button')) {
-      (button as HTMLButtonElement).onmousedown = () => {
-        // 如果按钮的内容为 "Copied!"，则跳过复制操作
-        if (button.innerHTML === 'Copied!') {
-          return;
-        }
-
-        const preContent = button.parentElement!.cloneNode(true) as HTMLElement;
-        preContent.removeChild(preContent.querySelector('button')!);
-
-        // Remove the alert element if it exists in preContent
-        const alertElement = preContent.querySelector('.hljs-copy-alert');
-        if (alertElement) {
-          preContent.removeChild(alertElement);
-        }
-
-        clipboard
-          .writeText(preContent.textContent || '')
-          .then(function () {
-            button.innerHTML = 'Copied!';
-            button.dataset.copied = 'true';
-
-            let alert: HTMLDivElement | null = Object.assign(document.createElement('div'), {
-              role: 'status',
-              className: 'hljs-copy-alert',
-              innerHTML: 'Copied to clipboard',
-            });
-            button.parentElement!.appendChild(alert);
-
-            setTimeout(() => {
-              if (alert) {
-                button.innerHTML = 'Copy';
-                button.dataset.copied = 'false';
-                button.parentElement!.removeChild(alert);
-                alert = null;
-              }
-            }, 2000);
-          })
-          .then();
-      };
-    }
-  }
-};
-
-const copyMessageContent = () => {
-  /* debugger
-  if (!navigator.clipboard) return;
-  navigator.clipboard
-    .writeText(props.message.message || "")
-    .then(() => {
-      // console.log('copied', props.message.message);
-      Message.success(t('commons.copiedToClipboard'))
-    }
-    ).then(); */
-  const messageContent = content.value || '';
-  clipboard
-    .writeText(messageContent)
-    .then(() => {
-      Message.success(t('commons.copiedToClipboard'));
-    })
-    .catch(() => {
-      console.error('Failed to copy message content to clipboard.');
-    });
-};
+function copyMessageContent() {
+  // const messageContent = content.value || '';
+  // clipboard
+  //   .writeText(messageContent)
+  //   .then(() => {
+  //     Message.success(t('commons.copiedToClipboard'));
+  //   })
+  //   .catch(() => {
+  //     console.error('Failed to copy message content to clipboard.');
+  //   });
+}
 </script>
 
 <style>

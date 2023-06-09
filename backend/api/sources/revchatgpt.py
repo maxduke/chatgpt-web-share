@@ -13,9 +13,11 @@ from api.conf import Config, Credentials
 from api.enums import OpenaiWebChatModels, ChatSourceTypes
 from api.exceptions import InvalidParamsException, OpenaiWebException
 from api.models.doc import OpenaiWebChatMessageMetadata, OpenaiWebConversationHistoryDocument, \
-    OpenaiWebConversationHistoryMeta, OpenaiWebChatMessage, OpenaiWebChatMessageTextContent, OpenaiWebChatMessageCodeContent, \
-    OpenaiWebChatMessageTetherBrowsingDisplayContent, OpenaiWebChatMessageTetherQuoteContent, OpenaiWebChatMessageContent, \
-    OpenaiWebChatMessageSystemErrorContent
+    OpenaiWebConversationHistoryMeta, OpenaiWebChatMessage, OpenaiWebChatMessageTextContent, \
+    OpenaiWebChatMessageCodeContent, \
+    OpenaiWebChatMessageTetherBrowsingDisplayContent, OpenaiWebChatMessageTetherQuoteContent, \
+    OpenaiWebChatMessageContent, \
+    OpenaiWebChatMessageSystemErrorContent, OpenaiWebChatMessageStderrContent
 from api.schemas.openai_schemas import OpenAIChatPlugin, OpenAIChatPluginUserSettings
 from utils.common import singleton_with_lock
 from utils.logger import get_logger
@@ -38,6 +40,7 @@ def convert_revchatgpt_message(item: dict, message_id: str = None) -> OpenaiWebC
         content_map = {
             "text": OpenaiWebChatMessageTextContent,
             "code": OpenaiWebChatMessageCodeContent,
+            "stderr": OpenaiWebChatMessageStderrContent,
             "tether_browsing_display": OpenaiWebChatMessageTetherBrowsingDisplayContent,
             "tether_quote": OpenaiWebChatMessageTetherQuoteContent,
             "system_error": OpenaiWebChatMessageSystemErrorContent
@@ -69,11 +72,6 @@ def convert_revchatgpt_message(item: dict, message_id: str = None) -> OpenaiWebC
         )
     )
     if "metadata" in item["message"] and item["message"]["metadata"] != {}:
-        # result.metadata.finish_details = item["message"]["metadata"].get("finish_details")
-        # result.metadata.invoked_plugin = item["message"]["metadata"].get("invoked_plugin")
-        # result.metadata.command = item["message"]["metadata"].get("command")
-        # result.metadata.args = item["message"]["metadata"].get("args")
-        # result.metadata.status = item["message"]["metadata"].get("status")
         result.metadata = result.metadata.copy(
             update=item["message"]["metadata"]
         )
@@ -140,9 +138,9 @@ class RevChatGPTManager:
     def __init__(self):
         self.chatbot = AsyncChatbot({
             "access_token": credentials.chatgpt_access_token,
-            "paid": config.revchatgpt.is_plus_account,
+            "paid": config.openai_web.is_plus_account,
             "model": "text-davinci-002-render-sha",  # default model
-        }, base_url=config.revchatgpt.chatgpt_base_url)
+        }, base_url=config.openai_web.chatgpt_base_url)
         self.semaphore = asyncio.Semaphore(1)
 
     def is_busy(self):
@@ -155,7 +153,7 @@ class RevChatGPTManager:
         while True:
             url = f"{self.chatbot.base_url}conversations?offset={offset}&limit={limit}"
             if timeout is None:
-                timeout = httpx.Timeout(config.revchatgpt.common_timeout)
+                timeout = httpx.Timeout(config.openai_web.common_timeout)
             response = await self.chatbot.session.get(url, timeout=timeout)
             await _check_response(response)
             data = json.loads(response.text)
@@ -238,7 +236,7 @@ class RevChatGPTManager:
         if plugin_ids:
             data["plugin_ids"] = plugin_ids
 
-        timeout = httpx.Timeout(Config().revchatgpt.common_timeout, read=Config().revchatgpt.ask_timeout)
+        timeout = httpx.Timeout(Config().openai_web.common_timeout, read=Config().openai_web.ask_timeout)
 
         async with self.chatbot.session.stream(
                 method="POST",
@@ -260,7 +258,11 @@ class RevChatGPTManager:
                 except json.decoder.JSONDecodeError:
                     continue
                 if not _check_fields(line):
-                    raise ValueError(f"Field missing. Details: {str(line)}")
+                    if "error" in line:
+                        raise OpenaiWebException(line["error"])
+                    else:
+                        logger.warning(f"Field missing. Details: {str(line)}")
+                        continue
 
                 yield line
 
@@ -289,7 +291,7 @@ class RevChatGPTManager:
         response = await self.chatbot.session.get(
             url=f"{self.chatbot.base_url}aip/p",
             params=params,
-            timeout=config.revchatgpt.ask_timeout
+            timeout=config.openai_web.ask_timeout
         )
         await _check_response(response)
         return parse_obj_as(list[OpenAIChatPlugin], response.json().get("items"))

@@ -4,40 +4,31 @@ import { h } from 'vue';
 import ChatModelTagsRow from '@/components/ChatModelTagsRow.vue';
 import ChatTypeTagInfoCell from '@/components/ChatTypeTagInfoCell.vue';
 import { i18n } from '@/i18n';
-import { openaiApiChatModelNames, openaiWebChatModelNames } from '@/types/json_schema';
+import { openaiApiChatModelNames, openaiWebChatModelNames} from '@/types/json_schema';
 import { chatStatusMap, UserRead, UserSettingSchema } from '@/types/schema';
 import { getCountTrans } from '@/utils/chat';
 
 const t = i18n.global.t as any;
 
 export const renderUserPerModelCounts = (setting: UserSettingSchema, availableOnly = false) => {
-  const revCounts = {} as Record<string, string>;
-  const apiCounts = {} as Record<string, string>;
-  if (availableOnly) {
-    setting.openai_web.available_models.forEach((model) => {
-      revCounts[model] = getCountTrans(setting.openai_web.per_model_ask_count[model]);
-    });
-    setting.openai_api.available_models.forEach((model) => {
-      apiCounts[model] = getCountTrans(setting.openai_api.per_model_ask_count[model]);
-    });
-  } else {
-    openaiWebChatModelNames.forEach((model) => {
-      revCounts[model] = getCountTrans(setting.openai_web.per_model_ask_count[model]);
-    }
-    );
-    openaiApiChatModelNames.forEach((model) => {
-      apiCounts[model] = getCountTrans(setting.openai_api.per_model_ask_count[model]);
-    }
-    );
-  }
+  const openaiWebCounts = {} as Record<string, string>;
+  const openaiApiCounts = {} as Record<string, string>;
+  openaiWebChatModelNames.forEach((model) => {
+    if (availableOnly && setting.openai_web.per_model_ask_count[model] == undefined) return;
+    openaiWebCounts[model] = getCountTrans(setting.openai_web.per_model_ask_count[model]);
+  });
+  openaiApiChatModelNames.forEach((model) => {
+    if (availableOnly && setting.openai_api.per_model_ask_count[model] == undefined) return;
+    openaiApiCounts[model] = getCountTrans(setting.openai_api.per_model_ask_count[model]);
+  });
   // console.log(revCounts, apiCounts);
   return h(ChatTypeTagInfoCell, {
     value: {
-      rev: h(ChatModelTagsRow, {
-        value: revCounts,
+      openai_web: h(ChatModelTagsRow, {
+        value: openaiWebCounts,
       }),
-      api: h(ChatModelTagsRow, {
-        value: apiCounts,
+      openai_api: h(ChatModelTagsRow, {
+        value: openaiApiCounts,
       }),
     },
   });

@@ -9,11 +9,11 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BrowsingIcon: typeof import('./src/components/BrowsingIcon.vue')['default']
     ChatGPTAvatar: typeof import('./src/components/ChatGPTAvatar.vue')['default']
     ChatModelTagsRow: typeof import('./src/components/ChatModelTagsRow.vue')['default']
     ChatTypeTagInfoCell: typeof import('./src/components/ChatTypeTagInfoCell.vue')['default']
     HelpTooltip: typeof import('./src/components/HelpTooltip.vue')['default']
-    NAlert: typeof import('naive-ui')['NAlert']
     NAutoComplete: typeof import('naive-ui')['NAutoComplete']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NButton: typeof import('naive-ui')['NButton']

@@ -93,7 +93,9 @@ const colorMap = {
   black: '#000000',
   purple: 'rgb(171, 104, 255)',
   lightblue: '#9ECBFB',
-  darkblue: '#2F94FF'
+  darkblue: '#2F94FF',
+  darkgreen: '#0E7C7B',
+  darkpurple: '#6F2C91',
 };
 
 const color = computed(() => {

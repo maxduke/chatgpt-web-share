@@ -151,7 +151,7 @@ async def check_limits(user: UserReadAdmin, ask_request: AskRequest):
 
 def check_message(msg: str):
     # 检查消息中的敏感信息
-    url = Config().revchatgpt.chatgpt_base_url
+    url = Config().openai_web.chatgpt_base_url
     if url and url in msg:
         return msg.replace(url, "<chatgpt_base_url>")
 
@@ -329,12 +329,6 @@ async def chat(websocket: WebSocket):
         ))
         websocket_code = 1014
         websocket_reason = "errors.httpError"
-    except ValueError as e:
-        # 修复 message 为 None 时的错误
-        if str(e).startswith("Field missing"):
-            logger.warning(str(e))
-        else:
-            raise e
     except Exception as e:
         logger.error(str(e))
         content = check_message(str(e))

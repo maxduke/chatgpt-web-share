@@ -133,7 +133,16 @@
     "updateUserBasic": "Update basic user information",
     "updateUserSetting": "update user settings",
     "userBasicInfo": "Basic user information",
-    "userSettings": "User Function Settings"
+    "userSettings": "User Function Settings",
+    "usePlugin": "Use Plugin",
+    "requestTo": "Request To",
+    "responseTo": "Response From",
+    "readingContent": "Reading Content",
+    "quoteContent": "Quote Content",
+    "click": "Click",
+    "error": "Error",
+    "browsingActions": "Browsing History",
+    "browsingHistory": "Browsing History"
   },
   "errors": {
     "403": "403 error: access denied",
@@ -264,7 +273,9 @@
   },
   "models": {
     "gpt_3_5": "GPT-3.5",
+    "gpt_3_5_mobile": "GPT-3.5 Mobile",
     "gpt_4": "GPT-4",
+    "gpt_4_mobile": "GPT-4 Mobile",
     "gpt_4_browsing": "GPT-4 Browsing",
     "gpt_4_plugins": "GPT-4 Plugins (not currently supported)"
   }
