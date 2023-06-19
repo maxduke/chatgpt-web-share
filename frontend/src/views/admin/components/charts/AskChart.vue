@@ -1,6 +1,6 @@
 <template>
   <div class="pr-4">
-    <v-chart class="h-60" :option="option" :loading="props.loading" />
+    <v-chart class="h-100" :option="option" :loading="props.loading" />
   </div>
 </template>
 
@@ -106,7 +106,7 @@ function makeDataset(askRecords: AskLogAggregation[]) {
       // 下面的非echarts配置，用于生成series
       type,
       model,
-      name: `${t('labels.' + type)}-${t('models.' + model)}`,
+      name: `${t('sources.' + type)}-${t('models.' + model)}`,
     });
   });
 

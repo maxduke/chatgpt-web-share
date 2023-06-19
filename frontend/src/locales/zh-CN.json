@@ -146,7 +146,24 @@
     "copy": "复制",
     "shouldRenderMarkdown": "是否渲染为 Markdown",
     "showRawMessage": "显示原始消息",
-    "messagesCount": "{0} 条消息"
+    "messagesCount": "合并自 {0} 条消息",
+    "justNow": "刚刚",
+    "hoursMinutesAgo": "{0}小时{1}分钟前",
+    "minutesAgo": "{0}分钟前",
+    "every": "每",
+    "times": "次",
+    "minutes": "分钟",
+    "pluginSettings": "OpenAI Web 插件设置",
+    "most_popular": "最受欢迎",
+    "installed": "已安装",
+    "newly_added": "新增",
+    "all": "全部",
+    "uninstall": "卸载",
+    "install": "安装",
+    "noPluginsAvailable": "获取插件列表失败，请检查是否设置 “openai_web.is_plus_account” 项为 true",
+    "disable": "禁用",
+    "enable": "启用",
+    "enabled": "已启用"
   },
   "errors": {
     "403": "403 错误：无访问权限",
@@ -177,7 +194,9 @@
     "httpError": "HTTP错误",
     "invalidParams": "参数不合法",
     "internal": "内部错误",
-    "noAvailableTotalAskCount": "该类型对话方式无可用总对话次数"
+    "noAvailableTotalAskCount": "该类型对话方式无可用总对话次数",
+    "userChatTypeExpired": "该对话类型有效期已到期，请联系管理员增加时长",
+    "userNotAllowToAskAtThisTime": "当前时间段不允许提问"
   },
   "tips": {
     "loginExpired": "登录已过期。是否跳转到登录页面？",
@@ -229,7 +248,10 @@
     "createSuccess": "创建成功",
     "updateSuccess": "更新成功",
     "seperate_settings": "以下内容将分别设置使用revChatGPT和API的选项",
-    "modelRequired": "请选择模型"
+    "modelRequired": "请选择模型",
+    "installSuccess": "安装成功",
+    "disablePluginSuccess": "禁用插件成功",
+    "enablePluginSuccess": "启用插件成功"
   },
   "labels": {
     "nickname": "昵称",
@@ -254,8 +276,6 @@
     "can_use_openai_api": "允许使用 OpenAI API",
     "openai_api_credits": "OpenAI API 积分余额",
     "openai_api_available_models": "可用模型",
-    "openai_web": "Web",
-    "openai_api": "API",
     "allow_chat_type": "允许使用",
     "available_models": "允许使用的模型",
     "allow_to_use": "允许使用",
@@ -273,14 +293,29 @@
     "model": "模型",
     "last_active_time": "最后活动时间",
     "rev_chat_status": "Chat 状态",
-    "max_conv_count": "最大对话数量"
+    "max_conv_count": "最大对话数量",
+    "source": "来源",
+    "plugins": "插件"
   },
   "models": {
     "gpt_3_5": "GPT-3.5",
     "gpt_3_5_mobile": "GPT-3.5 Mobile",
     "gpt_4": "GPT-4",
     "gpt_4_browsing": "GPT-4 Browsing",
-    "gpt_4_plugins": "GPT-4 Plugins(暂不支持)",
+    "gpt_4_plugins": "GPT-4 Plugins",
     "gpt_4_mobile": "GPT-4 Mobile"
+  },
+  "sources": {
+    "openai_web": "OpenAI Web",
+    "openai_api": "OpenAI API"
+  },
+  "sources_short": {
+    "openai_web": "Web",
+    "openai_api": "API"
+  },
+  "desc": {
+    "rate_limits": "定义用户在某时间间隔内最多能够发起多少次对话，优先级按照时间间隔从小到大计算。",
+    "daily_available_time_slots": "仅允许在每天的这些时间段内使用，如果为空表示不限制。",
+    "openai_web_installed_plugins": "注意：只有在此处启用的插件，在使用GPT-4 Plugin时才能选择！"
   }
 }

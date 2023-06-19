@@ -21,13 +21,14 @@ from api.enums import OpenaiWebChatStatus, ChatSourceTypes, OpenaiWebChatModels,
 from api.exceptions import InternalException, InvalidParamsException
 from api.models.db import OpenaiWebConversation, User, BaseConversation
 from api.models.doc import OpenaiWebChatMessage, OpenaiApiChatMessage, OpenaiWebConversationHistoryDocument, \
-    OpenaiApiConversationHistoryDocument, OpenaiApiChatMessageTextContent, AskLogDocument, OpenaiWebAskLogMeta, OpenaiApiAskLogMeta
+    OpenaiApiConversationHistoryDocument, OpenaiApiChatMessageTextContent, AskLogDocument, OpenaiWebAskLogMeta, \
+    OpenaiApiAskLogMeta
 from api.routers.conv import _get_conversation_by_id
 from api.schemas import OpenaiWebConversationSchema, AskRequest, AskResponse, AskResponseType, UserReadAdmin, \
     BaseConversationSchema
 from api.schemas.openai_schemas import OpenAIChatPlugin, OpenAIChatPluginUserSettings
 from api.sources import RevChatGPTManager, convert_revchatgpt_message, OpenAIChatManager, OpenAIChatException
-from api.users import websocket_auth, current_active_user
+from api.users import websocket_auth, current_active_user, current_super_user
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -48,21 +49,44 @@ async def change_user_chat_status(user_id: int, status: OpenaiWebChatStatus):
 
 
 _plugins_result: list[OpenAIChatPlugin] | None = None
+_plugins_result_map: dict[str, OpenAIChatPlugin] | None = None
 _plugins_result_last_update_time = None
 
 
-@router.get("/chat/openai-plugins", tags=["chat"], response_model=list[OpenAIChatPlugin])
-async def get_chat_plugins(_user: User = Depends(current_active_user)):
-    global _plugins_result, _plugins_result_last_update_time
-    if _plugins_result is None or time.time() - _plugins_result_last_update_time > 3600:
+async def _refresh_plugins():
+    global _plugins_result, _plugins_result_map, _plugins_result_last_update_time
+    if _plugins_result is None or time.time() - _plugins_result_last_update_time > 3600 * 24:
         _plugins_result = await openai_web_manager.get_plugin_manifests()
+        _plugins_result_map = {plugin.id: plugin for plugin in _plugins_result}
         _plugins_result_last_update_time = time.time()
     return _plugins_result
 
 
-@router.patch("/chat/openai-plugins/{plugin_id}/user-settings", tags=["chat"], response_model=OpenAIChatPlugin)
+@router.get("/chat/openai-plugins/all", tags=["chat"], response_model=list[OpenAIChatPlugin])
+async def get_all_openai_web_chat_plugins(_user: User = Depends(current_active_user)):
+    plugins = await _refresh_plugins()
+    return plugins
+
+
+@router.get("/chat/openai-plugins/installed", tags=["chat"], response_model=list[OpenAIChatPlugin])
+async def get_installed_openai_web_chat_plugins(_user: User = Depends(current_active_user)):
+    plugins = await _refresh_plugins()
+    return [plugin for plugin in plugins if plugin.user_settings and plugin.user_settings.is_installed]
+
+
+@router.get("/chat/openai-plugin/{plugin_id}", tags=["chat"], response_model=OpenAIChatPlugin)
+async def get_openai_web_plugin(plugin_id: str, _user: User = Depends(current_active_user)):
+    await _refresh_plugins()
+    global _plugins_result_map
+    if plugin_id in _plugins_result_map:
+        return _plugins_result_map[plugin_id]
+    else:
+        raise InvalidParamsException("errors.pluginNotFound")
+
+
+@router.patch("/chat/openai-plugin/{plugin_id}/user-settings", tags=["chat"], response_model=OpenAIChatPlugin)
 async def update_chat_plugin_user_settings(plugin_id: str, settings: OpenAIChatPluginUserSettings,
-                                           _user: User = Depends(current_active_user)):
+                                           _user: User = Depends(current_super_user)):
     if settings.is_authenticated is not None:
         raise InvalidParamsException("can not set is_authenticated")
     result = await openai_web_manager.change_plugin_user_settings(plugin_id, settings)
@@ -103,16 +127,17 @@ async def check_limits(user: UserReadAdmin, ask_request: AskRequest):
 
     # 是否允许使用当前提问类型
     if not source_setting.allow_to_use:
-        raise WebsocketInvalidAskException("errors.userNotAllowToUseChatType")
+        raise WebsocketInvalidAskException(tip="errors.userNotAllowToUseChatType")
 
     # 是否到期
     current_datetime = datetime.now().astimezone(tz=timezone.utc)
     if source_setting.valid_until is not None and current_datetime > source_setting.valid_until:
-        raise WebsocketInvalidAskException("errors.userChatTypeExpired")
+        raise WebsocketInvalidAskException(tip="errors.userChatTypeExpired",
+                                           error_detail=f"valid until: {source_setting.valid_until}")
 
     # 当前时间是否允许请求
     time_slots = source_setting.daily_available_time_slots  # list of {start_time, end_time} datetime.time
-    if time_slots is not None:
+    if time_slots is not None and len(time_slots) > 0:
         now_time = datetime.now().time()  # TODO: 时区处理
         if not any(time_slot.start_time <= now_time <= time_slot.end_time for time_slot in time_slots):
             raise WebsocketInvalidAskException("errors.userNotAllowToAskAtThisTime")
@@ -194,7 +219,7 @@ async def chat(websocket: WebSocket):
     try:
         await check_limits(user, ask_request)
     except WebsocketException as e:
-        await reply(AskResponse(type=AskResponseType.error, error_detail=str(e)))
+        await reply(AskResponse(type=AskResponseType.error, tip=e.tip, error_detail=e.error_detail))
         await websocket.close(e.code, e.tip)
         return
 
@@ -264,7 +289,8 @@ async def chat(websocket: WebSocket):
         async for data in manager.ask(content=ask_request.content,
                                       conversation_id=ask_request.conversation_id,
                                       parent_id=ask_request.parent,
-                                      model=model):
+                                      model=model,
+                                      plugin_ids=ask_request.openai_web_plugin_ids):
             has_got_reply = True
 
             try:

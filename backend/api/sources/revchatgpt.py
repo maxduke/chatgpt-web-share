@@ -189,7 +189,7 @@ class RevChatGPTManager:
             mapping=mapping,
             current_node=result.get("current_node"),
             current_model=current_model,
-            rev_extra=OpenaiWebConversationHistoryMeta(
+            meta=OpenaiWebConversationHistoryMeta(
                 source="openai_web",
                 plugin_ids=result.get("plugin_ids"),
                 moderation_results=result.get("moderation_results"),
@@ -231,9 +231,10 @@ class RevChatGPTManager:
             "conversation_id": str(conversation_id) if conversation_id else None,
             "parent_message_id": str(parent_id) if parent_id else None,
             "model": model.code(),
-            "history_and_training_disabled": False
+            "history_and_training_disabled": False,
+            "arkose_token": None
         }
-        if plugin_ids:
+        if plugin_ids and conversation_id is None:
             data["plugin_ids"] = plugin_ids
 
         timeout = httpx.Timeout(Config().openai_web.common_timeout, read=Config().openai_web.ask_timeout)
@@ -281,6 +282,8 @@ class RevChatGPTManager:
         self.chatbot.reset_chat()
 
     async def get_plugin_manifests(self, statuses="approved", is_installed=None, offset=0, limit=250):
+        if not config.openai_web.is_plus_account:
+            raise InvalidParamsException("errors.notPlusChatgptAccount")
         params = {
             "statuses": statuses,
             "offset": offset,
@@ -297,6 +300,8 @@ class RevChatGPTManager:
         return parse_obj_as(list[OpenAIChatPlugin], response.json().get("items"))
 
     async def change_plugin_user_settings(self, plugin_id: str, setting: OpenAIChatPluginUserSettings):
+        if not config.openai_web.is_plus_account:
+            raise InvalidParamsException("errors.notPlusChatgptAccount")
         response = await self.chatbot.session.patch(
             url=f"{self.chatbot.base_url}aip/p/{plugin_id}/user-settings",
             json=setting.dict(exclude_unset=True, exclude_none=True),
