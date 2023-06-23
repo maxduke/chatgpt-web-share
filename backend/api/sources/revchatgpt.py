@@ -75,7 +75,6 @@ def convert_revchatgpt_message(item: dict, message_id: str = None) -> OpenaiWebC
         result.metadata = result.metadata.copy(
             update=item["message"]["metadata"]
         )
-        result.metadata.cite_metadata = item["message"]["metadata"].get("_cite_metadata")
         model_code = item["message"]["metadata"].get("model_slug")
         result.model = OpenaiWebChatModels.from_code(model_code) or model_code
     return result
@@ -124,7 +123,7 @@ async def _check_response(response: httpx.Response) -> None:
         await response.aread()
         error = OpenaiWebException(
             message=response.text,
-            code=response.status_code,
+            status_code=response.status_code,
         )
         raise error from ex
 
@@ -202,7 +201,7 @@ class RevChatGPTManager:
         await self.chatbot.clear_conversations()
 
     async def ask(self, content: str, conversation_id: uuid.UUID = None, parent_id: uuid.UUID = None,
-                  model: OpenaiWebChatModels = None, plugin_ids: list[str] = None):
+                  model: OpenaiWebChatModels = None, plugin_ids: list[str] = None, **_kwargs):
 
         model = model or OpenaiWebChatModels.gpt_3_5
 
