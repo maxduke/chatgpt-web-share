@@ -53,7 +53,8 @@ class AuthSetting(BaseModel):
 class OpenaiWebChatGPTSetting(BaseModel):
     is_plus_account: bool = False
     chatgpt_base_url: Optional[str] = None
-    common_timeout: int = Field(10, ge=1)   # connect, read, write
+    proxy: Optional[str] = None
+    common_timeout: int = Field(10, ge=1)  # connect, read, write
     ask_timeout: int = Field(600, ge=1)
 
     @validator("chatgpt_base_url")
@@ -63,8 +64,9 @@ class OpenaiWebChatGPTSetting(BaseModel):
         return v
 
 
-class OpenaiAPISetting(BaseModel):
+class OpenaiApiSetting(BaseModel):
     openai_base_url: str = 'https://api.openai.com/v1/'
+    proxy: Optional[str] = None
     connect_timeout: int = Field(10, ge=1)
     read_timeout: int = Field(20, ge=1)
 
@@ -81,7 +83,7 @@ class StatsSetting(BaseModel):
 
 class ConfigModel(BaseModel):
     openai_web: OpenaiWebChatGPTSetting = OpenaiWebChatGPTSetting()
-    openai_api: OpenaiAPISetting = OpenaiAPISetting()
+    openai_api: OpenaiApiSetting = OpenaiApiSetting()
     common: CommonSetting = CommonSetting()
     http: HttpSetting = HttpSetting()
     data: DataSetting = DataSetting()
@@ -96,7 +98,7 @@ class ConfigModel(BaseModel):
 @singleton_with_lock
 class Config(BaseConfig[ConfigModel]):
     if _TYPE_CHECKING:
-        openai_api: OpenaiAPISetting = OpenaiAPISetting()
+        openai_api: OpenaiApiSetting = OpenaiApiSetting()
         common: CommonSetting = CommonSetting()
         http: HttpSetting = HttpSetting()
         openai_web: OpenaiWebChatGPTSetting = OpenaiWebChatGPTSetting()
@@ -105,5 +107,5 @@ class Config(BaseConfig[ConfigModel]):
         data: DataSetting = DataSetting()
         auth: AuthSetting = AuthSetting()
 
-    def __init__(self):
-        super().__init__(ConfigModel, "config.yaml")
+    def __init__(self, load_config: bool = True):
+        super().__init__(ConfigModel, "config.yaml", load_config=load_config)
