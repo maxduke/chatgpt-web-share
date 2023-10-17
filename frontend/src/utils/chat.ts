@@ -1,3 +1,5 @@
+import DOMPurify from 'dompurify';
+
 import { i18n } from '@/i18n';
 import { allChatModelNames } from '@/types/json_schema';
 import {
@@ -16,7 +18,6 @@ import {
   OpenaiWebChatMessageTextContent,
   OpenaiWebChatModels,
 } from '@/types/schema';
-
 const t = i18n.global.t as any;
 
 export const chatModelColorMap: Record<string, string> = {
@@ -180,7 +181,7 @@ export function splitMessagesInGroup(messages: BaseChatMessage[]): BaseChatMessa
         message.role == 'assistant' &&
         typeof message.content !== 'string' &&
         message.content?.content_type == 'text' &&
-        metadata.recipient == 'all'
+        metadata?.recipient == 'all'
       ) {
         if (currentMessageListType !== 'text') {
           currentMessageListType = 'text';
@@ -262,19 +263,47 @@ export function getTextMessageContent(messages: BaseChatMessage[]) {
 export function replaceMathDelimiters(input: string) {
   let output = '';
   let pos = 0;
+  let isCodeBlock = false,
+    isCodeInline = false;
+  const nextChar = (n: number) => {
+    if (pos + n >= input.length) return '';
+    else return input.charAt(pos + n);
+  };
+
   while (pos < input.length) {
-    if (input.charCodeAt(pos) === 0x5C /* \ */) {
-      const nextChar = input.charAt(pos + 1);
-      if (nextChar === '(' || nextChar === '[') {
-        const isInline = nextChar === '(';
+    const c = input.at(pos);
+    if (c === '\\' && !isCodeBlock && !isCodeInline) {
+      if (nextChar(1) === '(' || nextChar(1) === '[') {
+        const isInline = nextChar(1) === '(';
         const endMarker = isInline ? '\\)' : '\\]';
         const endPos = input.indexOf(endMarker, pos + 2);
         if (endPos >= 0) {
           output += isInline ? '$' : '$$';
-          output += input.substring(pos + 2, endPos);
+          output += input.substring(pos + 2, endPos).trim();
           output += isInline ? '$' : '$$';
           pos = endPos + endMarker.length;
           continue;
+        }
+      }
+    } else if (c === '`') {
+      const isCodeBlockDelimiter = nextChar(1) === '`' && nextChar(2) === '`';
+      if (isCodeBlockDelimiter) {
+        if (isCodeBlock) {
+          isCodeBlock = false;
+        } else if (isCodeInline) {
+          isCodeInline = false;
+          isCodeBlock = true;
+        } else {
+          isCodeBlock = true;
+        }
+        output += '```';
+        pos += 3;
+        continue;
+      } else {
+        if (isCodeInline) {
+          isCodeInline = false;
+        } else {
+          isCodeInline = true;
         }
       }
     }
@@ -285,3 +314,6 @@ export function replaceMathDelimiters(input: string) {
   return output;
 }
 
+export function dompurifyRenderedHtml(html: string) {
+  return DOMPurify.sanitize(html, {ALLOW_UNKNOWN_PROTOCOLS: true});
+}
