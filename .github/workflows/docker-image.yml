@@ -27,9 +27,6 @@ jobs:
         with:
           ref: ${{ github.event.inputs.branch }}
 
-      - name: Clone ChatGPT-Proxy-V4
-        run: git clone https://github.com/moeakwak/ChatGPT-Proxy-V4.git
-
       # Documentation: https://github.com/docker/setup-qemu-action
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
