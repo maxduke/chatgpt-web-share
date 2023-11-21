@@ -1,13 +1,15 @@
 name: Build and publish Docker image
 
 on:
-  push:
-    tags: ["v*"]
   workflow_dispatch:
     inputs:
       version:
         description: "Version tag for the Docker image (semver)"
         required: true
+      branch:
+        description: "Branch to build from"
+        required: false
+        default: 'dev'
 
 env:
   IMAGE_NAME: ${{ github.repository }}
@@ -23,6 +25,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      # Documentation: https://github.com/docker/setup-qemu-action
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
 
       - name: Docker meta
         id: meta
@@ -67,7 +75,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
