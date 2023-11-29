@@ -18,6 +18,7 @@ default_openai_web_model_code_mapping = {
     "gpt_4_plugins": "gpt-4-plugins",
     "gpt_4_code_interpreter": "gpt-4-code-interpreter",
     "gpt_4_dalle": "gpt-4-dalle"
+    "gpt_4_gizmo": "gpt-4-gizmo"
 }
 
 

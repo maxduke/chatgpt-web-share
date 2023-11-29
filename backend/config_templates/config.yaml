@@ -21,6 +21,7 @@ openai_web:
     gpt_4_plugins: gpt-4-plugins
     gpt_4_code_interpreter: gpt-4-code-interpreter
     gpt_4_dalle: gpt-4-dalle
+    gpt_4_gizmo: gpt-4-gizmo
   file_upload_strategy: browser_upload_only
   disable_uploading: false
 openai_api:
