@@ -9,11 +9,6 @@
               <span class="md:hidden">{{ $t('commons.siteTitle') }}</span>
             </a>
           </div>
-          <div class="hidden sm:block">
-            <a class="h-full inline-block flex" href="https://github.com/chatpire/chatgpt-web-share" target="_blank">
-              <n-icon :color="appStore.theme == 'dark' ? 'white' : 'black'" :component="LogoGithub" />
-            </a>
-          </div>
           <n-tag :bordered="false" type="success" size="small" class="hidden sm:inline-flex">
             {{ version }}
           </n-tag>
