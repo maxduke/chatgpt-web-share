@@ -311,7 +311,7 @@
     "imageUploadRequirements": "最多能够上传4张图片",
     "dragFileOrImageHere": "点击或拖拽任何文件到此处以上传",
     "gpt4UploadingRequirements": "不超过10份文件或图片，每份文件不超过512MB；请确保文件不含敏感信息",
-    "check_chatgpt_accounts": "请在更新到最新 Access Token 后使用此功能。如果您开通了 Team 订阅，将会自动填写 Team Account ID。",
+    "check_chatgpt_accounts": "请在保存配置并更新到最新 Access Token 后使用此功能。如果您开通了 Team 订阅，将会自动填写 Team Account ID。",
     "autoFillTeamAccountIdSuccess": "已自动填写 Team Account ID",
     "checkChatgptAccountsFailed": "请求失败"
   },
@@ -356,7 +356,8 @@
     "config": {
       "enabled_models": "启用的模型",
       "model_code_mapping": "模型代码映射",
-      "file_upload_strategy": "文件上传策略"
+      "file_upload_strategy": "文件上传策略",
+      "max_completion_concurrency": "最大并行对话数量"
     },
     "conversation_id": "对话ID",
     "queueing_time": "排队时长",
@@ -402,7 +403,8 @@
     "openai_web_installed_plugins": "注意：只有在此处启用或在官网安装的插件，在使用GPT-4 Plugin时才能选择！",
     "config": {
       "enabled_models": "设置全局启用哪些模型，在此处不启用的模型所有账号都无法使用",
-      "file_upload_strategy": "配置使用 code interpreter 模型时文件如何上传，详见文档"
+      "file_upload_strategy": "配置使用 code interpreter 模型时文件如何上传，详见文档",
+      "max_completion_concurrency": "决定同时能有多少用户进行对话。如果设置为一个很大的值，相当于禁用排队对话功能。"
     }
   },
   "dialog": {

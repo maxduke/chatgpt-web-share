@@ -17,7 +17,9 @@
         <n-tooltip placement="bottom" trigger="hover">
           <template #trigger>
             <n-button
+              v-show="tab.name === 'config'"
               type="success"
+              class="mb-2"
               :loading="checkLoading"
               :disabled="checkResponse !== null"
               @click="checkChatgptAccount()"
@@ -91,7 +93,7 @@ const credentialsModel = ref<CredentialsModel | null>(null);
 fixModelSchema(jsonConfigModelSchema);
 fixModelSchema(jsonCredentialsModelSchema);
 
-console.log(jsonConfigModelSchema);
+// console.log(jsonConfigModelSchema);
 
 const gtsm = screenWidthGreaterThan('sm');
 
@@ -124,6 +126,10 @@ const configUiSchema = {
     file_upload_strategy: {
       'ui:title': t('labels.config.file_upload_strategy'),
       'ui:description': t('desc.config.file_upload_strategy'),
+    },
+    max_completion_concurrency: {
+      'ui:title': t('labels.config.max_completion_concurrency'),
+      'ui:description': t('desc.config.max_completion_concurrency'),
     },
   },
   openai_api: {
