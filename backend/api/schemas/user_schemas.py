@@ -56,7 +56,7 @@ class OpenaiWebSourceSettingSchema(BaseSourceSettingSchema):
     @staticmethod
     def default():
         default_models = [OpenaiWebChatModels(m) for m in
-                          ["gpt_3_5", "gpt_4", "gpt_4_code_interpreter", "gpt_4_plugins", "gpt_4_browsing"]]
+                          ["gpt_3_5", "gpt_4", "gpt_4o"]]
         return OpenaiWebSourceSettingSchema(
             available_models=[m for m in default_models if m in config.openai_web.enabled_models],
             per_model_ask_count=OpenaiWebPerModelAskCount(),
