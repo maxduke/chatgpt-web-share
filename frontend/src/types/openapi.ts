@@ -525,14 +525,8 @@ export interface components {
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "text-davinci-002-render-sha",
-       *     "gpt_3_5_mobile": "text-davinci-002-render-sha-mobile",
        *     "gpt_4": "gpt-4",
-       *     "gpt_4o": "gpt-4o",
-       *     "gpt_4_browsing": "gpt-4-browsing",
-       *     "gpt_4_code_interpreter": "gpt-4-code-interpreter",
-       *     "gpt_4_dalle": "gpt-4-dalle",
-       *     "gpt_4_mobile": "gpt-4-mobile",
-       *     "gpt_4_plugins": "gpt-4-plugins"
+       *     "gpt_4o": "gpt-4o"
        *   },
        *   "file_upload_strategy": "browser_upload_only",
        *   "max_completion_concurrency": 1,
@@ -636,14 +630,8 @@ export interface components {
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "text-davinci-002-render-sha",
-       *     "gpt_3_5_mobile": "text-davinci-002-render-sha-mobile",
        *     "gpt_4": "gpt-4",
-       *     "gpt_4o": "gpt-4o",
-       *     "gpt_4_browsing": "gpt-4-browsing",
-       *     "gpt_4_code_interpreter": "gpt-4-code-interpreter",
-       *     "gpt_4_dalle": "gpt-4-dalle",
-       *     "gpt_4_mobile": "gpt-4-mobile",
-       *     "gpt_4_plugins": "gpt-4-plugins"
+       *     "gpt_4o": "gpt-4o"
        *   },
        *   "file_upload_strategy": "browser_upload_only",
        *   "max_completion_concurrency": 1,
@@ -1283,14 +1271,8 @@ export interface components {
        * Model Code Mapping
        * @default {
        *   "gpt_3_5": "text-davinci-002-render-sha",
-       *   "gpt_3_5_mobile": "text-davinci-002-render-sha-mobile",
        *   "gpt_4": "gpt-4",
-       *   "gpt_4o": "gpt-4o",
-       *   "gpt_4_mobile": "gpt-4-mobile",
-       *   "gpt_4_browsing": "gpt-4-browsing",
-       *   "gpt_4_plugins": "gpt-4-plugins",
-       *   "gpt_4_code_interpreter": "gpt-4-code-interpreter",
-       *   "gpt_4_dalle": "gpt-4-dalle"
+       *   "gpt_4o": "gpt-4o"
        * }
        */
       model_code_mapping: {
@@ -1594,7 +1576,7 @@ export interface components {
      * OpenaiWebChatModels
      * @enum {string}
      */
-    OpenaiWebChatModels: "gpt_3_5" | "gpt_3_5_mobile" | "gpt_4" | "gpt_4o"| "gpt_4_mobile" | "gpt_4_browsing" | "gpt_4_code_interpreter" | "gpt_4_plugins" | "gpt_4_dalle";
+    OpenaiWebChatModels: "gpt_3_5" | "gpt_4" | "gpt_4o";
     /**
      * OpenaiWebChatStatus
      * @enum {string}
@@ -1696,14 +1678,8 @@ export interface components {
      * OpenaiWebPerModelAskCount
      * @default {
      *   "gpt_3_5": 0,
-     *   "gpt_3_5_mobile": 0,
      *   "gpt_4": 0,
-     *   "gpt_4o": 0,
-     *   "gpt_4_mobile": 0,
-     *   "gpt_4_browsing": 0,
-     *   "gpt_4_code_interpreter": 0,
-     *   "gpt_4_plugins": 0,
-     *   "gpt_4_dalle": 0
+     *   "gpt_4o": 0
      * }
      */
     OpenaiWebPerModelAskCount: {

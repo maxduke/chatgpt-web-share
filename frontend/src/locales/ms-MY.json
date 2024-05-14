@@ -349,14 +349,8 @@
   },
   "models": {
     "gpt_3_5": "GPT-3.5",
-    "gpt_3_5_mobile": "GPT-3.5 Mobile",
     "gpt_4": "GPT-4 All Tools",
-    "gpt_4o": "GPT-4 Omni",
-    "gpt_4_browsing": "GPT-4 Web Browsing",
-    "gpt_4_plugins": "GPT-4 Plugins",
-    "gpt_4_mobile": "GPT-4 Mobile",
-    "gpt_4_code_interpreter": "GPT-4 Code Interpreter",
-    "gpt_4_dalle": "GPT-4 DALL·E 3"
+    "gpt_4o": "GPT-4 Omni"
   },
   "modelDescriptions": {
     "openai_api": {
@@ -365,14 +359,8 @@
     },
     "openai_web": {
       "gpt_3_5": "Model terpantas, sangat sesuai untuk kebanyakan tugas harian.",
-      "gpt_3_5_mobile": "Versi mudah alih GPT-3.5. Tidak disyorkan untuk digunakan.",
       "gpt_4": "Penjelajahan, analisis data lanjutan dan DALL·E kini telah diintegrasikan ke dalam GPT-4. Semua pengguna akan berkongsi had penggunaan 50 mesej GPT-4 setiap 3 jam (termasuk semua model GPT-4).",
-      "gpt_4o": "Newest and most advanced model",
-      "gpt_4_browsing": "Model eksperimental yang tahu bila dan bagaimana untuk menjelajah web untuk menyelesaikan masalah.",
-      "gpt_4_plugins": "Model eksperimental yang mampu menggunakan pelbagai plugin.",
-      "gpt_4_mobile": "Versi mudah alih GPT-4. Tidak disyorkan untuk digunakan.",
-      "gpt_4_code_interpreter": "Model eksperimental yang boleh menyelesaikan tugas dengan menghasilkan kod Python dan melaksanakannya dalam Jupyter Notebook.\nAnda boleh memuat naik sebarang jenis fail dan meminta model untuk menganalisisnya atau menghasilkan fail baru untuk muat turun.",
-      "gpt_4_dalle": "Menghasilkan imej dari deskripsi teks semula jadi menggunakan model DALL·E 3."
+      "gpt_4o": "Newest and most advanced model."
     }
   },
   "sources": {
