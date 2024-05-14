@@ -22,14 +22,8 @@ const t = i18n.global.t as any;
 
 export const chatModelColorMap: Record<string, string> = {
   gpt_3_5: 'green',
-  gpt_3_5_mobile: 'darkgreen',
   gpt_4: 'purple',
-  gpt_4o: 'purple',
-  gpt_4_mobile: 'darkpurple',
-  gpt_4_browsing: 'purple',
-  gpt_4_plugins: 'purple',
-  gpt_4_code_interpreter: 'purple',
-  gpt_4_dalle: 'purple',
+  gpt_4o: 'darkpurple'
 };
 
 export const getChatModelColor = (model_name: OpenaiWebChatModels | OpenaiApiChatModels | string | null) => {
@@ -38,11 +32,7 @@ export const getChatModelColor = (model_name: OpenaiWebChatModels | OpenaiApiCha
 };
 
 export const getChatModelIconStyle = (model_name: OpenaiWebChatModels | OpenaiApiChatModels | string | null) => {
-  if (model_name == 'gpt_4_plugins') return 'plugins';
-  else if (model_name == 'gpt_4_browsing') return 'browsing';
-  else if (model_name == 'gpt_4_code_interpreter') return 'code-interpreter';
-  else if (model_name == 'gpt_4_dalle') return 'dalle';
-  else return 'default';
+  return 'default';
 };
 
 export const getChatModelNameTrans = (model_name: OpenaiWebChatModels | OpenaiApiChatModels | string | null) => {

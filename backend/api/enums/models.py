@@ -39,14 +39,8 @@ class BaseChatModelEnum(StrEnum):
 
 class OpenaiWebChatModels(BaseChatModelEnum):
     gpt_3_5 = auto()
-    gpt_3_5_mobile = auto()
     gpt_4 = auto()
     gpt_4o = auto()
-    gpt_4_mobile = auto()
-    gpt_4_browsing = auto()
-    gpt_4_code_interpreter = auto()
-    gpt_4_plugins = auto()
-    gpt_4_dalle = auto()
 
 
 class OpenaiApiChatModels(BaseChatModelEnum):
