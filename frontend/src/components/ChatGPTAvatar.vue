@@ -13,7 +13,7 @@ import ChatGPTIcon from './ChatGPTIcon.vue';
 
 const props = defineProps<{
   model?: string | null;
-  iconStyle?: 'default';
+  iconStyle?: string;
   color?: string;
   alpha?: number;
   size?: any;
