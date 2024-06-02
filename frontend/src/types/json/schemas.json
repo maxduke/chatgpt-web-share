@@ -53,7 +53,8 @@
                             "type": "string",
                             "enum": [
                               "gpt_3_5",
-                              "gpt_4"
+                              "gpt_4",
+                              "gpt_4o"
                             ],
                             "title": "OpenaiApiChatModels"
                           }
@@ -189,7 +190,8 @@
                     "type": "string",
                     "enum": [
                       "gpt_3_5",
-                      "gpt_4"
+                      "gpt_4",
+                      "gpt_4o"
                     ],
                     "title": "OpenaiApiChatModels"
                   }
@@ -284,7 +286,8 @@
                 "type": "string",
                 "enum": [
                   "gpt_3_5",
-                  "gpt_4"
+                  "gpt_4",
+                  "gpt_4o"
                 ],
                 "title": "OpenaiApiChatModels"
               }
@@ -5907,6 +5910,7 @@
                 "default": [
                   "gpt_3_5",
                   "gpt_4",
+                  "gpt_4o",
                   "gpt_4_plugins"
                 ]
               },
@@ -5971,6 +5975,7 @@
           "enabled_models": [
             "gpt_3_5",
             "gpt_4",
+            "gpt_4o",
             "gpt_4_plugins"
           ],
           "model_code_mapping": {
@@ -6031,7 +6036,8 @@
                   "type": "string",
                   "enum": [
                     "gpt_3_5",
-                    "gpt_4"
+                    "gpt_4",
+                    "gpt_4o"
                   ],
                   "title": "OpenaiApiChatModels"
                 },
@@ -6039,7 +6045,8 @@
                 "title": "Enabled Models",
                 "default": [
                   "gpt_3_5",
-                  "gpt_4"
+                  "gpt_4",
+                  "gpt_4o"
                 ]
               },
               "model_code_mapping": {
@@ -6050,7 +6057,8 @@
                 "title": "Model Code Mapping",
                 "default": {
                   "gpt_3_5": "gpt-3.5-turbo",
-                  "gpt_4": "gpt-4"
+                  "gpt_4": "gpt-4",
+                  "gpt_4o": "gpt-4o"
                 }
               }
             },
@@ -6065,11 +6073,13 @@
           "read_timeout": 20,
           "enabled_models": [
             "gpt_3_5",
-            "gpt_4"
+            "gpt_4",
+            "gpt_4o"
           ],
           "model_code_mapping": {
             "gpt_3_5": "gpt-3.5-turbo",
-            "gpt_4": "gpt-4"
+            "gpt_4": "gpt-4",
+            "gpt_4o": "gpt-4o"
           }
         }
       },
@@ -6442,6 +6452,7 @@
                 "default": [
                   "gpt_3_5",
                   "gpt_4",
+                  "gpt_4o",
                   "gpt_4_plugins"
                 ]
               },
@@ -6506,6 +6517,7 @@
           "enabled_models": [
             "gpt_3_5",
             "gpt_4",
+            "gpt_4o",
             "gpt_4_plugins"
           ],
           "model_code_mapping": {
@@ -6566,7 +6578,8 @@
                   "type": "string",
                   "enum": [
                     "gpt_3_5",
-                    "gpt_4"
+                    "gpt_4",
+                    "gpt_4o"
                   ],
                   "title": "OpenaiApiChatModels"
                 },
@@ -6574,7 +6587,8 @@
                 "title": "Enabled Models",
                 "default": [
                   "gpt_3_5",
-                  "gpt_4"
+                  "gpt_4",
+                  "gpt_4o"
                 ]
               },
               "model_code_mapping": {
@@ -6585,7 +6599,8 @@
                 "title": "Model Code Mapping",
                 "default": {
                   "gpt_3_5": "gpt-3.5-turbo",
-                  "gpt_4": "gpt-4"
+                  "gpt_4": "gpt-4",
+                  "gpt_4o": "gpt-4o"
                 }
               }
             },
@@ -6600,11 +6615,13 @@
           "read_timeout": 20,
           "enabled_models": [
             "gpt_3_5",
-            "gpt_4"
+            "gpt_4",
+            "gpt_4o"
           ],
           "model_code_mapping": {
             "gpt_3_5": "gpt-3.5-turbo",
-            "gpt_4": "gpt-4"
+            "gpt_4": "gpt-4",
+            "gpt_4o": "gpt-4o"
           }
         }
       },
@@ -7079,7 +7096,8 @@
         "type": "string",
         "enum": [
           "gpt_3_5",
-          "gpt_4"
+          "gpt_4",
+          "gpt_4o"
         ],
         "title": "OpenaiApiChatModels"
       }
@@ -8035,7 +8053,8 @@
     "type": "string",
     "enum": [
       "gpt_3_5",
-      "gpt_4"
+      "gpt_4",
+      "gpt_4o"
     ],
     "title": "OpenaiApiChatModels"
   },
@@ -9187,7 +9206,8 @@
     "title": "OpenaiApiPerModelAskCount",
     "default": {
       "gpt_3_5": 0,
-      "gpt_4": 0
+      "gpt_4": 0,
+      "gpt_4o": 0
     }
   },
   "OpenaiApiSetting": {
@@ -9230,7 +9250,8 @@
           "type": "string",
           "enum": [
             "gpt_3_5",
-            "gpt_4"
+            "gpt_4",
+            "gpt_4o"
           ],
           "title": "OpenaiApiChatModels"
         },
@@ -9238,7 +9259,8 @@
         "title": "Enabled Models",
         "default": [
           "gpt_3_5",
-          "gpt_4"
+          "gpt_4",
+          "gpt_4o"
         ]
       },
       "model_code_mapping": {
@@ -9249,7 +9271,8 @@
         "title": "Model Code Mapping",
         "default": {
           "gpt_3_5": "gpt-3.5-turbo",
-          "gpt_4": "gpt-4"
+          "gpt_4": "gpt-4",
+          "gpt_4o": "gpt-4o"
         }
       }
     },
@@ -9337,7 +9360,8 @@
           "type": "string",
           "enum": [
             "gpt_3_5",
-            "gpt_4"
+            "gpt_4",
+            "gpt_4o"
           ],
           "title": "OpenaiApiChatModels"
         },
@@ -9352,7 +9376,8 @@
         "title": "OpenaiApiPerModelAskCount",
         "default": {
           "gpt_3_5": 0,
-          "gpt_4": 0
+          "gpt_4": 0,
+          "gpt_4o": 0
         }
       },
       "allow_custom_openai_api": {
@@ -11044,6 +11069,7 @@
         "default": [
           "gpt_3_5",
           "gpt_4",
+          "gpt_4o",
           "gpt_4_plugins"
         ]
       },
@@ -17070,7 +17096,8 @@
                   "type": "string",
                   "enum": [
                     "gpt_3_5",
-                    "gpt_4"
+                    "gpt_4",
+                    "gpt_4o"
                   ],
                   "title": "OpenaiApiChatModels"
                 },
@@ -17085,7 +17112,8 @@
                 "title": "OpenaiApiPerModelAskCount",
                 "default": {
                   "gpt_3_5": 0,
-                  "gpt_4": 0
+                  "gpt_4": 0,
+                  "gpt_4o": 0
                 }
               },
               "allow_custom_openai_api": {
@@ -17474,7 +17502,8 @@
                   "type": "string",
                   "enum": [
                     "gpt_3_5",
-                    "gpt_4"
+                    "gpt_4",
+                    "gpt_4o"
                   ],
                   "title": "OpenaiApiChatModels"
                 },
@@ -17489,7 +17518,8 @@
                 "title": "OpenaiApiPerModelAskCount",
                 "default": {
                   "gpt_3_5": 0,
-                  "gpt_4": 0
+                  "gpt_4": 0,
+                  "gpt_4o": 0
                 }
               },
               "allow_custom_openai_api": {
@@ -17830,7 +17860,8 @@
               "type": "string",
               "enum": [
                 "gpt_3_5",
-                "gpt_4"
+                "gpt_4",
+                "gpt_4o"
               ],
               "title": "OpenaiApiChatModels"
             },
@@ -17845,7 +17876,8 @@
             "title": "OpenaiApiPerModelAskCount",
             "default": {
               "gpt_3_5": 0,
-              "gpt_4": 0
+              "gpt_4": 0,
+              "gpt_4o": 0
             }
           },
           "allow_custom_openai_api": {
@@ -18159,7 +18191,8 @@
               "type": "string",
               "enum": [
                 "gpt_3_5",
-                "gpt_4"
+                "gpt_4",
+                "gpt_4o"
               ],
               "title": "OpenaiApiChatModels"
             },
@@ -18174,7 +18207,8 @@
             "title": "OpenaiApiPerModelAskCount",
             "default": {
               "gpt_3_5": 0,
-              "gpt_4": 0
+              "gpt_4": 0,
+              "gpt_4o": 0
             }
           },
           "allow_custom_openai_api": {
