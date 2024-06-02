@@ -17393,7 +17393,8 @@
                 "title": "OpenaiApiPerModelAskCount",
                 "default": {
                   "gpt_3_5": 0,
-                  "gpt_4": 0
+                  "gpt_4": 0,
+                  "gpt_4o": 0
                 }
               },
               "allow_custom_openai_api": {
