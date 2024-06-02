@@ -355,7 +355,8 @@
   "modelDescriptions": {
     "openai_api": {
       "gpt_3_5": "Model terpantas, sangat sesuai untuk kebanyakan tugas harian.",
-      "gpt_4": "Model paling berkebolehan, sangat sesuai untuk tugas yang memerlukan kreativiti dan penalaran tingkat tinggi. Relatif lebih lambat."
+      "gpt_4": "Model paling berkebolehan, sangat sesuai untuk tugas yang memerlukan kreativiti dan penalaran tingkat tinggi. Relatif lebih lambat.",
+      "gpt_4o": "Newest and most advanced model."
     },
     "openai_web": {
       "gpt_3_5": "Model terpantas, sangat sesuai untuk kebanyakan tugas harian.",

@@ -146,7 +146,8 @@
     "OpenaiApiChatModels": {
       "enum": [
         "gpt_3_5",
-        "gpt_4"
+        "gpt_4",
+        "gpt_4o"
       ],
       "title": "OpenaiApiChatModels",
       "type": "string"
@@ -190,7 +191,8 @@
         "enabled_models": {
           "default": [
             "gpt_3_5",
-            "gpt_4"
+            "gpt_4",
+            "gpt_4o"
           ],
           "items": {
             "$ref": "#/$defs/OpenaiApiChatModels"
@@ -204,7 +206,8 @@
           },
           "default": {
             "gpt_3_5": "gpt-3.5-turbo",
-            "gpt_4": "gpt-4"
+            "gpt_4": "gpt-4",
+            "gpt_4o": "gpt-4o"
           },
           "title": "Model Code Mapping",
           "type": "object"
@@ -328,7 +331,7 @@
           "default": [
             "gpt_3_5",
             "gpt_4",
-            "gpt_4_plugins"
+            "gpt_4o"
           ],
           "items": {
             "$ref": "#/$defs/OpenaiWebChatModels"
@@ -441,7 +444,7 @@
         "enabled_models": [
           "gpt_3_5",
           "gpt_4",
-          "gpt_4_plugins"
+          "gpt_4o"
         ],
         "model_code_mapping": {
           "gpt_3_5": "text-davinci-002-render-sha",
@@ -467,11 +470,13 @@
         "read_timeout": 20,
         "enabled_models": [
           "gpt_3_5",
-          "gpt_4"
+          "gpt_4",
+          "gpt_4o"
         ],
         "model_code_mapping": {
           "gpt_3_5": "gpt-3.5-turbo",
-          "gpt_4": "gpt-4"
+          "gpt_4": "gpt-4",
+          "gpt_4o": "gpt-4o"
         }
       }
     },

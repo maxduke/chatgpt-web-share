@@ -180,7 +180,7 @@ const uploadMode = computed(() => {
     currentConversation.value.current_model == 'gpt_4_code_interpreter'
   )
     return 'legacy_code_interpreter';
-  else if (currentConversation.value?.source === 'openai_web' && currentConversation.value.current_model == 'gpt_4')
+  else if (currentConversation.value?.source === 'openai_web' &&  (currentConversation.value.current_model == 'gpt_4' || currentConversation.value.current_model == 'gpt_4o'))
     return 'all';
   else return null;
 });

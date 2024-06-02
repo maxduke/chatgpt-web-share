@@ -77,7 +77,7 @@ class OpenaiWebChatGPTSetting(BaseModel):
     sync_conversations_on_startup: bool = False
     sync_conversations_schedule: bool = False
     sync_conversations_schedule_interval_hours: int = Field(12, ge=1)
-    enabled_models: list[OpenaiWebChatModels] = ["gpt_3_5", "gpt_4", "gpt_4_plugins"]
+    enabled_models: list[OpenaiWebChatModels] = ["gpt_3_5", "gpt_4", "gpt_4o"]
     model_code_mapping: dict[OpenaiWebChatModels, str] = default_openai_web_model_code_mapping
     file_upload_strategy: OpenaiWebFileUploadStrategyOption = OpenaiWebFileUploadStrategyOption.browser_upload_only
     max_completion_concurrency: int = Field(1, ge=1)
@@ -115,10 +115,11 @@ class OpenaiApiSetting(BaseModel):
     proxy: Optional[str] = None
     connect_timeout: int = Field(10, ge=1)
     read_timeout: int = Field(20, ge=1)
-    enabled_models: list[OpenaiApiChatModels] = ["gpt_3_5", "gpt_4"]
+    enabled_models: list[OpenaiApiChatModels] = ["gpt_3_5", "gpt_4", "gpt_4o"]
     model_code_mapping: dict[OpenaiApiChatModels, str] = {
         "gpt_3_5": "gpt-3.5-turbo",
         "gpt_4": "gpt-4",
+        "gpt_4o": "gpt-4o"
     }
 
 

@@ -521,7 +521,8 @@ export interface components {
        *   "sync_conversations_schedule_interval_hours": 12,
        *   "enabled_models": [
        *     "gpt_3_5",
-       *     "gpt_4"
+       *     "gpt_4",
+       *     "gpt_4o"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "text-davinci-002-render-sha",
@@ -542,11 +543,13 @@ export interface components {
        *   "read_timeout": 20,
        *   "enabled_models": [
        *     "gpt_3_5",
-       *     "gpt_4"
+       *     "gpt_4",
+       *     "gpt_4o"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "gpt-3.5-turbo",
-       *     "gpt_4": "gpt-4"
+       *     "gpt_4": "gpt-4",
+       *     "gpt_4o": "gpt-4o"
        *   }
        * }
        */
@@ -626,7 +629,8 @@ export interface components {
        *   "sync_conversations_schedule_interval_hours": 12,
        *   "enabled_models": [
        *     "gpt_3_5",
-       *     "gpt_4"
+       *     "gpt_4",
+       *     "gpt_4o"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "text-davinci-002-render-sha",
@@ -647,11 +651,13 @@ export interface components {
        *   "read_timeout": 20,
        *   "enabled_models": [
        *     "gpt_3_5",
-       *     "gpt_4"
+       *     "gpt_4",
+       *     "gpt_4o"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "gpt-3.5-turbo",
-       *     "gpt_4": "gpt-4"
+       *     "gpt_4": "gpt-4",
+       *     "gpt_4o": "gpt-4o"
        *   }
        * }
        */
@@ -970,7 +976,8 @@ export interface components {
      * OpenaiApiPerModelAskCount
      * @default {
      *   "gpt_3_5": 0,
-     *   "gpt_4": 0
+     *   "gpt_4": 0,
+     *   "gpt_4o": 0
      * }
      */
     OpenaiApiPerModelAskCount: {
@@ -1004,7 +1011,8 @@ export interface components {
        * Enabled Models
        * @default [
        *   "gpt_3_5",
-       *   "gpt_4"
+       *   "gpt_4",
+       *   "gpt_4o"
        * ]
        */
       enabled_models: components["schemas"]["OpenaiApiChatModels"][];
@@ -1012,7 +1020,8 @@ export interface components {
        * Model Code Mapping
        * @default {
        *   "gpt_3_5": "gpt-3.5-turbo",
-       *   "gpt_4": "gpt-4"
+       *   "gpt_4": "gpt-4",
+       *   "gpt_4o": "gpt-4o"
        * }
        */
       model_code_mapping: {
@@ -1263,7 +1272,8 @@ export interface components {
        * Enabled Models
        * @default [
        *   "gpt_3_5",
-       *   "gpt_4"
+       *   "gpt_4",
+       *   "gpt_4o"
        * ]
        */
       enabled_models: components["schemas"]["OpenaiWebChatModels"][];

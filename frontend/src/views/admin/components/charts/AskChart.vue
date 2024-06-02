@@ -199,7 +199,7 @@ const series = computed(() => {
     'rev|gpt_3_5': ['#9ce6aa', '#E8FFFB'],
     'rev|gpt_4': ['#F77234', '#FFE4BA'],
     'api|gpt_3_5': ['#F7B334', '#FFF4BA'],
-    'api|gpt_4': ['#9ce6aa', '#E8FFFB'],
+    'api|gpt_4': ['#9ce6aa', '#E8FFFB']
   };
 
   const getDatasetColors = (d: AskDataset) => {

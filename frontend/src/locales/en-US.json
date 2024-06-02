@@ -368,7 +368,8 @@
   "modelDescriptions": {
     "openai_api": {
       "gpt_3_5": "The fastest model, great for most everyday tasks.",
-      "gpt_4": "The most capable model, great for tasks that require creativity and advanced reasoning. Relatively slow."
+      "gpt_4": "The most capable model, great for tasks that require creativity and advanced reasoning. Relatively slow.",
+      "gpt_4o": "Newest and most advanced model."
     },
     "openai_web": {
       "gpt_3_5": "Great for most everyday tasks.",
