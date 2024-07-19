@@ -62,7 +62,7 @@
     "naive-ui": "^2.38.1",
     "openapi-typescript": "^6.7.4",
     "prettier": "^3.2.5",
-    "typescript": "^5.3.3",
+    "typescript": "~5.3.3",
     "unocss": "^0.58.5",
     "unplugin-vue-components": "^0.26.0",
     "vfonts": "^0.0.3",

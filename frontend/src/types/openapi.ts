@@ -525,7 +525,7 @@ export interface components {
        *     "gpt_4o"
        *   ],
        *   "model_code_mapping": {
-       *     "gpt_3_5": "text-davinci-002-render-sha",
+       *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
        *     "gpt_4o": "gpt-4o"
        *   },
@@ -547,7 +547,7 @@ export interface components {
        *     "gpt_4o"
        *   ],
        *   "model_code_mapping": {
-       *     "gpt_3_5": "gpt-3.5-turbo",
+       *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
        *     "gpt_4o": "gpt-4o"
        *   }
@@ -633,7 +633,7 @@ export interface components {
        *     "gpt_4o"
        *   ],
        *   "model_code_mapping": {
-       *     "gpt_3_5": "text-davinci-002-render-sha",
+       *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
        *     "gpt_4o": "gpt-4o"
        *   },
@@ -655,7 +655,7 @@ export interface components {
        *     "gpt_4o"
        *   ],
        *   "model_code_mapping": {
-       *     "gpt_3_5": "gpt-3.5-turbo",
+       *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
        *     "gpt_4o": "gpt-4o"
        *   }
@@ -1019,7 +1019,7 @@ export interface components {
       /**
        * Model Code Mapping
        * @default {
-       *   "gpt_3_5": "gpt-3.5-turbo",
+       *   "gpt_3_5": "gpt-4o-mini",
        *   "gpt_4": "gpt-4",
        *   "gpt_4o": "gpt-4o"
        * }
@@ -1280,7 +1280,7 @@ export interface components {
       /**
        * Model Code Mapping
        * @default {
-       *   "gpt_3_5": "text-davinci-002-render-sha",
+       *   "gpt_3_5": "gpt-4o-mini",
        *   "gpt_4": "gpt-4",
        *   "gpt_4o": "gpt-4o"
        * }

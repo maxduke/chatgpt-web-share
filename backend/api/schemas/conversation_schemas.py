@@ -17,7 +17,7 @@ logger = get_logger(__name__)
 def _validate_model(_source: ChatSourceTypes, model: str | None):
     if model is None:
         return
-    ignored_models = ["gpt-3.5-mobile", "gpt-4-mobile", "gpt-4-gizmo"]
+    ignored_models = ["gpt-3.5-mobile", "gpt-4-mobile", "gpt-4-gizmo", "gpt-3.5"]
     if model in ignored_models:
         return
     if _source == ChatSourceTypes.openai_web and model not in list(OpenaiWebChatModels):
