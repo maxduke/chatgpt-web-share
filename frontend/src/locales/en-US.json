@@ -361,20 +361,20 @@
     "conversation_id": "Conversatin ID"
   },
   "models": {
-    "gpt_3_5": "GPT-3.5",
-    "gpt_4": "GPT-4 All Tools",
-    "gpt_4o": "GPT-4 Omni"
+    "gpt_3_5": "GPT-4o mini",
+    "gpt_4": "GPT-4",
+    "gpt_4o": "GPT-4o"
   },
   "modelDescriptions": {
     "openai_api": {
-      "gpt_3_5": "The fastest model, great for most everyday tasks.",
-      "gpt_4": "The most capable model, great for tasks that require creativity and advanced reasoning. Relatively slow.",
-      "gpt_4o": "Newest and most advanced model."
+      "gpt_3_5": "Faster for everyday tasks",
+      "gpt_4": "Legacy model",
+      "gpt_4o": "Best for complex tasks"
     },
     "openai_web": {
-      "gpt_3_5": "Great for most everyday tasks.",
-      "gpt_4": "Advanced model for complex tasks.",
-      "gpt_4o": "Newest and most advanced model."
+      "gpt_3_5": "Faster for everyday tasks",
+      "gpt_4": "Legacy model",
+      "gpt_4o": "Best for complex tasks"
     }
   },
   "sources": {

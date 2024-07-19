@@ -348,20 +348,20 @@
     }
   },
   "models": {
-    "gpt_3_5": "GPT-3.5",
-    "gpt_4": "GPT-4 All Tools",
-    "gpt_4o": "GPT-4 Omni"
+    "gpt_3_5": "GPT-4o mini",
+    "gpt_4": "GPT-4",
+    "gpt_4o": "GPT-4o"
   },
   "modelDescriptions": {
     "openai_api": {
-      "gpt_3_5": "Model terpantas, sangat sesuai untuk kebanyakan tugas harian.",
-      "gpt_4": "Model paling berkebolehan, sangat sesuai untuk tugas yang memerlukan kreativiti dan penalaran tingkat tinggi. Relatif lebih lambat.",
-      "gpt_4o": "Newest and most advanced model."
+      "gpt_3_5": "Faster for everyday tasks",
+      "gpt_4": "Legacy model",
+      "gpt_4o": "Best for complex tasks"
     },
     "openai_web": {
-      "gpt_3_5": "Model terpantas, sangat sesuai untuk kebanyakan tugas harian.",
-      "gpt_4": "Penjelajahan, analisis data lanjutan dan DALL·E kini telah diintegrasikan ke dalam GPT-4. Semua pengguna akan berkongsi had penggunaan 50 mesej GPT-4 setiap 3 jam (termasuk semua model GPT-4).",
-      "gpt_4o": "Newest and most advanced model."
+      "gpt_3_5": "Faster for everyday tasks",
+      "gpt_4": "Legacy model",
+      "gpt_4o": "Best for complex tasks"
     }
   },
   "sources": {
