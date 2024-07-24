@@ -552,7 +552,29 @@ class OpenaiWebChatManager(metaclass=SingletonMeta):
         await _check_response(response)
         result = response.json()
         if result.get("status") == "success":
-            return result.get("download_url")
+            download_url =  result.get("download_url")
+            # 检查 download_url 是否是相对路径
+            if download_url.startswith('/'):
+                # 获取 endpoint
+                # 去除字符串末尾的斜杠（如果存在）
+                endpoint = config.openai_web.chatgpt_base_url.rstrip('/')
+                # 查找最后一个斜杠的位置
+                last_slash_index = endpoint.rfind('/')
+                # 截取字符串直到最后一个斜杠
+                endpoint = config.openai_web.chatgpt_base_url[:last_slash_index + 1]
+                # 完整的 URL
+                full_url = f"{endpoint}{download_url}"
+                # 重新发起请求以处理可能的307跳转
+                redirect_response = await self.session.get(
+                    url=full_url,
+                    headers=req_headers(use_team)
+                    allow_redirects=False
+                )
+                if redirect_response.status == 307:
+                    # 获取真正的下载URL
+                    download_url = redirect_response.headers['Location']
+                await _check_response(redirect_response)
+            return download_url
         else:
             raise ResourceNotFoundException(
                 f"{file_id} Failed to get download url: {result.get('error_code')}({result.get('error_message')})")
