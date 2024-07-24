@@ -567,7 +567,7 @@ class OpenaiWebChatManager(metaclass=SingletonMeta):
                 # 重新发起请求以处理可能的307跳转
                 redirect_response = await self.session.get(
                     url=full_url,
-                    headers=req_headers(use_team)
+                    headers=req_headers(use_team),
                     allow_redirects=False
                 )
                 if redirect_response.status == 307:
