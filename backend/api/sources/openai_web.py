@@ -567,8 +567,16 @@ class OpenaiWebChatManager(metaclass=SingletonMeta):
                 # 重新发起请求以处理可能的307跳转
                 redirect_response = await self.session.get(
                     url=full_url,
-                    headers=req_headers(use_team)
+                    headers=req_headers(use_team)，
+                    follow_redirects=False
                 )
+                # 打印状态码
+                print("Status Code:", redirect_response.status_code)
+                # 打印头部信息
+                print("Headers:")
+                for key, value in redirect_response.headers.items():
+                    print(f"{key}: {value}")
+
                 if redirect_response.status_code == 307:
                     # 获取真正的下载URL
                     download_url = redirect_response.headers['Location']
