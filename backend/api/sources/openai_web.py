@@ -572,7 +572,6 @@ class OpenaiWebChatManager(metaclass=SingletonMeta):
                 if redirect_response.status_code == 307:
                     # 获取真正的下载URL
                     download_url = redirect_response.headers['Location']
-                await _check_response(redirect_response)
             return download_url
         else:
             raise ResourceNotFoundException(
