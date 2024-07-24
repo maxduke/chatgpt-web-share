@@ -561,7 +561,7 @@ class OpenaiWebChatManager(metaclass=SingletonMeta):
                 # 查找最后一个斜杠的位置
                 last_slash_index = endpoint.rfind('/')
                 # 截取字符串直到最后一个斜杠
-                endpoint = config.openai_web.chatgpt_base_url[:last_slash_index + 1]
+                endpoint = config.openai_web.chatgpt_base_url[:last_slash_index]
                 # 完整的 URL
                 full_url = f"{endpoint}{download_url}"
                 # 打印 URL
