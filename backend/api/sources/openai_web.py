@@ -161,7 +161,7 @@ def default_header():
         # "X-Openai-Assistant-App-Id": "",
         # "Connection": "close",
         "Accept-Language": "en-US",
-        "Referer": "https://chat.openai.com/",
+        "Referer": "https://chatgpt.com/",
     }
 
 
@@ -402,7 +402,7 @@ class OpenaiWebChatManager(metaclass=SingletonMeta):
         data_json = json.dumps(jsonable_encoder(completion_request))
 
         headers = req_headers(use_team) | {
-            "referer": "https://chat.openai.com/" + (f"c/{conversation_id}" if conversation_id else "")}
+            "referer": "https://chatgpt.com/" + (f"c/{conversation_id}" if conversation_id else "")}
         if arkose_token is not None:
             headers["Openai-Sentinel-Arkose-Token"] = arkose_token
 
@@ -569,7 +569,7 @@ class OpenaiWebChatManager(metaclass=SingletonMeta):
                     url=full_url,
                     headers=req_headers(use_team)
                 )
-                if redirect_response.status == 307:
+                if redirect_response.status_code == 307:
                     # 获取真正的下载URL
                     download_url = redirect_response.headers['Location']
                 await _check_response(redirect_response)
@@ -664,7 +664,7 @@ class OpenaiWebChatManager(metaclass=SingletonMeta):
             'x-ms-blob-type': 'BlockBlob',
             'Content-Type': content_type,
             'x-ms-version': '2020-04-08',
-            'Origin': 'https://chat.openai.com',
+            'Origin': 'https://chatgpt.com',
         })
         async with aiofiles.open(file_path, mode='rb') as file:
             content = await file.read()
