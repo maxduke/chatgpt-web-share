@@ -564,6 +564,8 @@ class OpenaiWebChatManager(metaclass=SingletonMeta):
                 endpoint = config.openai_web.chatgpt_base_url[:last_slash_index + 1]
                 # 完整的 URL
                 full_url = f"{endpoint}{download_url}"
+                # 打印 URL
+                print("URL REDIRECT:", full_url)
                 # 重新发起请求以处理可能的307跳转
                 redirect_response = await self.session.get(
                     url=full_url,
