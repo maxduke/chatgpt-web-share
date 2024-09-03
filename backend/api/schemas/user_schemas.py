@@ -95,7 +95,7 @@ class OpenaiApiSourceSettingSchema(BaseSourceSettingSchema):
 
     @staticmethod
     def default():
-        default_models = [OpenaiApiChatModels(m) for m in ["gpt_3_5", "gpt_4", "gpt_4o"]]
+        default_models = [OpenaiApiChatModels(m) for m in ["gpt_3_5", "gpt_4", "gpt_4o", "claude_3_haiku"]]
         return OpenaiApiSourceSettingSchema(
             available_models=[m for m in default_models if m in config.openai_api.enabled_models],
             per_model_ask_count=OpenaiApiPerModelAskCount(),
