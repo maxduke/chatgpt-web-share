@@ -119,7 +119,8 @@ class OpenaiApiSetting(BaseModel):
     model_code_mapping: dict[OpenaiApiChatModels, str] = {
         "gpt_3_5": "gpt-4o-mini",
         "gpt_4": "gpt-4",
-        "gpt_4o": "gpt-4o"
+        "gpt_4o": "gpt-4o",
+        "claude_3_haiku": "claude-3-haiku"
     }
 
 

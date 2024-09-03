@@ -207,7 +207,8 @@
           "default": {
             "gpt_3_5": "gpt-4o-mini",
             "gpt_4": "gpt-4",
-            "gpt_4o": "gpt-4o"
+            "gpt_4o": "gpt-4o",
+            "claude_3_haiku": "claude-3-haiku"
           },
           "title": "Model Code Mapping",
           "type": "object"
@@ -476,7 +477,8 @@
         "model_code_mapping": {
           "gpt_3_5": "gpt-4o-mini",
           "gpt_4": "gpt-4",
-          "gpt_4o": "gpt-4o"
+          "gpt_4o": "gpt-4o",
+          "claude_3_haiku": "claude-3-haiku"
         }
       }
     },

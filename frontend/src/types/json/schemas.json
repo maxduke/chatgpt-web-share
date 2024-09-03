@@ -48,7 +48,8 @@
                             "enum": [
                               "gpt_3_5",
                               "gpt_4",
-                              "gpt_4o"
+                              "gpt_4o",
+                              "claude_3_haiku"
                             ],
                             "title": "OpenaiApiChatModels"
                           }
@@ -179,7 +180,8 @@
                     "enum": [
                       "gpt_3_5",
                       "gpt_4",
-                      "gpt_4o"
+                      "gpt_4o",
+                      "claude_3_haiku"
                     ],
                     "title": "OpenaiApiChatModels"
                   }
@@ -269,7 +271,8 @@
                 "enum": [
                   "gpt_3_5",
                   "gpt_4",
-                  "gpt_4o"
+                  "gpt_4o",
+                  "claude_3_haiku"
                 ],
                 "title": "OpenaiApiChatModels"
               }
@@ -5999,7 +6002,8 @@
                   "enum": [
                     "gpt_3_5",
                     "gpt_4",
-                    "gpt_4o"
+                    "gpt_4o",
+                    "claude_3_haiku"
                   ],
                   "title": "OpenaiApiChatModels"
                 },
@@ -6008,7 +6012,8 @@
                 "default": [
                   "gpt_3_5",
                   "gpt_4",
-                  "gpt_4o"
+                  "gpt_4o",
+                  "claude_3_haiku"
                 ]
               },
               "model_code_mapping": {
@@ -6020,7 +6025,8 @@
                 "default": {
                   "gpt_3_5": "gpt-4o-mini",
                   "gpt_4": "gpt-4",
-                  "gpt_4o":"gpt-4o"
+                  "gpt_4o":"gpt-4o",
+                  "claude_3_haiku": "claude-3-haiku"
                 }
               }
             },
@@ -6036,12 +6042,14 @@
           "enabled_models": [
             "gpt_3_5",
             "gpt_4",
-            "gpt_4o"
+            "gpt_4o",
+            "claude_3_haiku"
           ],
           "model_code_mapping": {
             "gpt_3_5": "gpt-4o-mini",
             "gpt_4": "gpt-4",
-            "gpt_4o":"gpt-4o"
+            "gpt_4o":"gpt-4o",
+            "claude_3_haiku": "claude-3-haiku"
           }
         }
       },
@@ -6521,7 +6529,8 @@
                   "enum": [
                     "gpt_3_5",
                     "gpt_4",
-                    "gpt_4o"
+                    "gpt_4o",
+                    "claude_3_haiku"
                   ],
                   "title": "OpenaiApiChatModels"
                 },
@@ -6530,7 +6539,8 @@
                 "default": [
                   "gpt_3_5",
                   "gpt_4",
-                  "gpt_4o"
+                  "gpt_4o",
+                  "claude_3_haiku"
                 ]
               },
               "model_code_mapping": {
@@ -6542,7 +6552,8 @@
                 "default": {
                   "gpt_3_5": "gpt-4o-mini",
                   "gpt_4": "gpt-4",
-                  "gpt_4o":"gpt-4o"
+                  "gpt_4o":"gpt-4o",
+                  "claude_3_haiku": "claude-3-haiku"
                 }
               }
             },
@@ -6558,12 +6569,14 @@
           "enabled_models": [
             "gpt_3_5",
             "gpt_4",
-            "gpt_4o"
+            "gpt_4o",
+            "claude_3_haiku"
           ],
           "model_code_mapping": {
             "gpt_3_5": "gpt-4o-mini",
             "gpt_4": "gpt-4",
-            "gpt_4o":"gpt-4o"
+            "gpt_4o":"gpt-4o",
+            "claude_3_haiku": "claude-3-haiku"
           }
         }
       },
@@ -7039,7 +7052,8 @@
         "enum": [
           "gpt_3_5",
           "gpt_4",
-          "gpt_4o"
+          "gpt_4o",
+          "claude_3_haiku"
         ],
         "title": "OpenaiApiChatModels"
       }
@@ -7996,7 +8010,8 @@
     "enum": [
       "gpt_3_5",
       "gpt_4",
-      "gpt_4o"
+      "gpt_4o",
+      "claude_3_haiku"
     ],
     "title": "OpenaiApiChatModels"
   },
@@ -9149,7 +9164,8 @@
     "default": {
       "gpt_3_5": 0,
       "gpt_4": 0,
-      "gpt_4o": 0
+      "gpt_4o": 0,
+      "claude_3_haiku": 0
     }
   },
   "OpenaiApiSetting": {
@@ -9193,7 +9209,8 @@
           "enum": [
             "gpt_3_5",
             "gpt_4",
-            "gpt_4o"
+            "gpt_4o",
+            "claude_3_haiku"
           ],
           "title": "OpenaiApiChatModels"
         },
@@ -9202,7 +9219,8 @@
         "default": [
           "gpt_3_5",
           "gpt_4",
-          "gpt_4o"
+          "gpt_4o",
+          "claude_3_haiku"
         ]
       },
       "model_code_mapping": {
@@ -9214,7 +9232,8 @@
         "default": {
           "gpt_3_5": "gpt-4o-mini",
           "gpt_4": "gpt-4",
-          "gpt_4o":"gpt-4o"
+          "gpt_4o":"gpt-4o",
+          "claude_3_haiku": "claude-3-haiku"
         }
       }
     },
@@ -9303,7 +9322,8 @@
           "enum": [
             "gpt_3_5",
             "gpt_4",
-            "gpt_4o"
+            "gpt_4o",
+            "claude_3_haiku"
           ],
           "title": "OpenaiApiChatModels"
         },
@@ -9319,7 +9339,8 @@
         "default": {
           "gpt_3_5": 0,
           "gpt_4": 0,
-          "gpt_4o": 0
+          "gpt_4o": 0,
+          "claude_3_haiku": 0
         }
       },
       "allow_custom_openai_api": {
@@ -16984,7 +17005,8 @@
                   "enum": [
                     "gpt_3_5",
                     "gpt_4",
-                    "gpt_4o"
+                    "gpt_4o",
+                    "claude_3_haiku"
                   ],
                   "title": "OpenaiApiChatModels"
                 },
@@ -17000,7 +17022,8 @@
                 "default": {
                   "gpt_3_5": 0,
                   "gpt_4": 0,
-                  "gpt_4o": 0
+                  "gpt_4o": 0,
+                  "claude_3_haiku": 0
                 }
               },
               "allow_custom_openai_api": {
@@ -17378,7 +17401,8 @@
                   "enum": [
                     "gpt_3_5",
                     "gpt_4",
-                    "gpt_4o"
+                    "gpt_4o",
+                    "claude_3_haiku"
                   ],
                   "title": "OpenaiApiChatModels"
                 },
@@ -17394,7 +17418,8 @@
                 "default": {
                   "gpt_3_5": 0,
                   "gpt_4": 0,
-                  "gpt_4o": 0
+                  "gpt_4o": 0,
+                  "claude_3_haiku": 0
                 }
               },
               "allow_custom_openai_api": {
@@ -17724,7 +17749,8 @@
               "enum": [
                 "gpt_3_5",
                 "gpt_4",
-                "gpt_4o"
+                "gpt_4o",
+                "claude_3_haiku"
               ],
               "title": "OpenaiApiChatModels"
             },
@@ -17740,7 +17766,8 @@
             "default": {
               "gpt_3_5": 0,
               "gpt_4": 0,
-              "gpt_4o": 0
+              "gpt_4o": 0,
+              "claude_3_haiku": 0
             }
           },
           "allow_custom_openai_api": {
@@ -18043,7 +18070,8 @@
               "enum": [
                 "gpt_3_5",
                 "gpt_4",
-                "gpt_4o"
+                "gpt_4o",
+                "claude_3_haiku"
               ],
               "title": "OpenaiApiChatModels"
             },
@@ -18059,7 +18087,8 @@
             "default": {
               "gpt_3_5": 0,
               "gpt_4": 0,
-              "gpt_4o": 0
+              "gpt_4o": 0,
+              "claude_3_haiku": 0
             }
           },
           "allow_custom_openai_api": {
