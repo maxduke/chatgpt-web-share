@@ -372,14 +372,16 @@
     "gpt_3_5": "GPT-4o mini",
     "gpt_4": "GPT-4",
     "gpt_4o": "GPT-4o",
-    "claude_3_haiku": "claude-3-haiku"
+    "claude_3_haiku": "Claude-3-haiku",
+    "claude_3_5_sonnet": "Claude-3.5-sonnet"
   },
   "modelDescriptions": {
     "openai_api": {
       "gpt_3_5": "最快的模型，非常适合大多数日常任务",
       "gpt_4": "遗留的模型",
       "gpt_4o": "针对复杂工作的最佳模型",
-      "claude_3_haiku": "快速模型，适合轻量任务"
+      "claude_3_haiku": "快速模型，适合轻量任务",
+      "claude_3_5_sonnet": "最佳模型，适合复杂任务"
     },
     "openai_web": {
       "gpt_3_5": "最快的模型，非常适合大多数日常任务",

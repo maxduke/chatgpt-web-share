@@ -115,12 +115,13 @@ class OpenaiApiSetting(BaseModel):
     proxy: Optional[str] = None
     connect_timeout: int = Field(10, ge=1)
     read_timeout: int = Field(20, ge=1)
-    enabled_models: list[OpenaiApiChatModels] = ["gpt_3_5", "gpt_4", "gpt_4o", "claude_3_haiku"]
+    enabled_models: list[OpenaiApiChatModels] = ["gpt_3_5", "gpt_4", "gpt_4o", "claude_3_haiku", "claude_3_5_sonnet"]
     model_code_mapping: dict[OpenaiApiChatModels, str] = {
         "gpt_3_5": "gpt-4o-mini",
         "gpt_4": "gpt-4",
         "gpt_4o": "gpt-4o",
-        "claude_3_haiku": "claude-3-haiku"
+        "claude_3_haiku": "anthropic/claude-3-haiku",
+        "claude_3_5_sonnet": "anthropic/claude-3.5-sonnet"
     }
 
 

@@ -351,14 +351,16 @@
     "gpt_3_5": "GPT-4o mini",
     "gpt_4": "GPT-4",
     "gpt_4o": "GPT-4o",
-    "claude_3_haiku": "claude-3-haiku"
+    "claude_3_haiku": "Claude-3-haiku",
+    "claude_3_5_sonnet": "Claude-3.5-sonnet"
   },
   "modelDescriptions": {
     "openai_api": {
       "gpt_3_5": "Faster for everyday tasks",
       "gpt_4": "Legacy model",
       "gpt_4o": "Best for complex tasks",
-      "claude_3_haiku": "Faster for lightweight actions"
+      "claude_3_haiku": "Faster for lightweight actions",
+      "claude_3_5_sonnet": "Best for complex tasks"
     },
     "openai_web": {
       "gpt_3_5": "Faster for everyday tasks",

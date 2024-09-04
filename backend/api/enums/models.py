@@ -48,6 +48,7 @@ class OpenaiApiChatModels(BaseChatModelEnum):
     gpt_4 = auto()
     gpt_4o = auto()
     claude_3_haiku = auto()
+    claude_3_5_sonnet = auto()
 
 
 if __name__ == "__main__":

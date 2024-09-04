@@ -208,7 +208,8 @@
             "gpt_3_5": "gpt-4o-mini",
             "gpt_4": "gpt-4",
             "gpt_4o": "gpt-4o",
-            "claude_3_haiku": "claude-3-haiku"
+            "claude_3_haiku": "claude-3-haiku",
+            "claude_3_5_sonnet": "claude-3.5-sonnet"
           },
           "title": "Model Code Mapping",
           "type": "object"
@@ -478,7 +479,8 @@
           "gpt_3_5": "gpt-4o-mini",
           "gpt_4": "gpt-4",
           "gpt_4o": "gpt-4o",
-          "claude_3_haiku": "claude-3-haiku"
+          "claude_3_haiku": "claude-3-haiku",
+          "claude_3_5_sonnet": "claude-3.5-sonnet"
         }
       }
     },

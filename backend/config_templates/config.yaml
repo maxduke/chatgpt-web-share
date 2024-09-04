@@ -35,11 +35,13 @@ openai_api:
   - gpt_4
   - gpt_4o
   - claude_3_haiku
+  - claude_3_5_sonnet
   model_code_mapping:
     gpt_3_5: gpt-4o-mini
     gpt_4: gpt-4
     gpt_4o: gpt-4o
-    claude_3_haiku: claude-3-haiku
+    claude_3_haiku: anthropic/claude-3-haiku
+    claude_3_5_sonnet: anthropic/claude-3.5-sonnet
 common:
   print_sql: false
   print_traceback: true
