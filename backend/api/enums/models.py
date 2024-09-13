@@ -41,12 +41,16 @@ class OpenaiWebChatModels(BaseChatModelEnum):
     gpt_3_5 = auto()
     gpt_4 = auto()
     gpt_4o = auto()
+    o1_preview = auto()
+    o1_mini = auto()
 
 
 class OpenaiApiChatModels(BaseChatModelEnum):
     gpt_3_5 = auto()
     gpt_4 = auto()
     gpt_4o = auto()
+    o1_preview = auto()
+    o1_mini = auto()
 
 
 if __name__ == "__main__":

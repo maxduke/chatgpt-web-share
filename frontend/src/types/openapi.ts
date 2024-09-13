@@ -522,12 +522,16 @@ export interface components {
        *   "enabled_models": [
        *     "gpt_3_5",
        *     "gpt_4",
-       *     "gpt_4o"
+       *     "gpt_4o"，
+       *     "o1_preview",
+       *     "o1_mini"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
-       *     "gpt_4o": "gpt-4o"
+       *     "gpt_4o": "gpt-4o",
+       *     "o1_preview": "o1-preview",
+       *     "o1_mini": "o1-mini"
        *   },
        *   "file_upload_strategy": "browser_upload_only",
        *   "max_completion_concurrency": 1,
@@ -544,12 +548,16 @@ export interface components {
        *   "enabled_models": [
        *     "gpt_3_5",
        *     "gpt_4",
-       *     "gpt_4o"
+       *     "gpt_4o"，
+       *     "o1_preview",
+       *     "o1_mini"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
-       *     "gpt_4o": "gpt-4o"
+       *     "gpt_4o": "gpt-4o",
+       *     "o1_preview": "o1-preview",
+       *     "o1_mini": "o1-mini"
        *   }
        * }
        */
@@ -630,12 +638,16 @@ export interface components {
        *   "enabled_models": [
        *     "gpt_3_5",
        *     "gpt_4",
-       *     "gpt_4o"
+       *     "gpt_4o"，
+       *     "o1_preview",
+       *     "o1_mini"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
-       *     "gpt_4o": "gpt-4o"
+       *     "gpt_4o": "gpt-4o",
+       *     "o1_preview": "o1-preview",
+       *     "o1_mini": "o1-mini"
        *   },
        *   "file_upload_strategy": "browser_upload_only",
        *   "max_completion_concurrency": 1,
@@ -652,12 +664,16 @@ export interface components {
        *   "enabled_models": [
        *     "gpt_3_5",
        *     "gpt_4",
-       *     "gpt_4o"
+       *     "gpt_4o"，
+       *     "o1_preview",
+       *     "o1_mini"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
-       *     "gpt_4o": "gpt-4o"
+       *     "gpt_4o": "gpt-4o",
+       *     "o1_preview": "o1-preview",
+       *     "o1_mini": "o1-mini"
        *   }
        * }
        */
@@ -977,7 +993,9 @@ export interface components {
      * @default {
      *   "gpt_3_5": 0,
      *   "gpt_4": 0,
-     *   "gpt_4o": 0
+     *   "gpt_4o": 0,
+     *   "o1_preview": 0,
+     *   "o1_mini": 0
      * }
      */
     OpenaiApiPerModelAskCount: {
@@ -1012,7 +1030,9 @@ export interface components {
        * @default [
        *   "gpt_3_5",
        *   "gpt_4",
-       *   "gpt_4o"
+       *   "gpt_4o"，
+       *   "o1_preview",
+       *   "o1_mini"
        * ]
        */
       enabled_models: components["schemas"]["OpenaiApiChatModels"][];
@@ -1021,7 +1041,9 @@ export interface components {
        * @default {
        *   "gpt_3_5": "gpt-4o-mini",
        *   "gpt_4": "gpt-4",
-       *   "gpt_4o": "gpt-4o"
+       *   "gpt_4o": "gpt-4o",
+       *   "o1_preview": "o1-preview",
+       *   "o1_mini": "o1-mini"
        * }
        */
       model_code_mapping: {
@@ -1273,7 +1295,9 @@ export interface components {
        * @default [
        *   "gpt_3_5",
        *   "gpt_4",
-       *   "gpt_4o"
+       *   "gpt_4o"，
+       *   "o1_preview",
+       *   "o1_mini"
        * ]
        */
       enabled_models: components["schemas"]["OpenaiWebChatModels"][];
@@ -1282,7 +1306,9 @@ export interface components {
        * @default {
        *   "gpt_3_5": "gpt-4o-mini",
        *   "gpt_4": "gpt-4",
-       *   "gpt_4o": "gpt-4o"
+       *   "gpt_4o": "gpt-4o",
+       *   "o1_preview": "o1-preview",
+       *   "o1_mini": "o1-mini"
        * }
        */
       model_code_mapping: {
@@ -1586,7 +1612,7 @@ export interface components {
      * OpenaiWebChatModels
      * @enum {string}
      */
-    OpenaiWebChatModels: "gpt_3_5" | "gpt_4" | "gpt_4o";
+    OpenaiWebChatModels: "gpt_3_5" | "gpt_4" | "gpt_4o" | "o1_preview" | "o1_mini";
     /**
      * OpenaiWebChatStatus
      * @enum {string}
@@ -1689,7 +1715,9 @@ export interface components {
      * @default {
      *   "gpt_3_5": 0,
      *   "gpt_4": 0,
-     *   "gpt_4o": 0
+     *   "gpt_4o": 0,
+     *   "o1_preview": 0,
+     *   "o1_mini": 0
      * }
      */
     OpenaiWebPerModelAskCount: {
