@@ -350,18 +350,24 @@
   "models": {
     "gpt_3_5": "GPT-4o mini",
     "gpt_4": "GPT-4",
-    "gpt_4o": "GPT-4o"
+    "gpt_4o": "GPT-4o",
+    "o1_preview": "o1-preview",
+    "o1_mini": "o1-mini"
   },
   "modelDescriptions": {
     "openai_api": {
       "gpt_3_5": "Faster for everyday tasks",
       "gpt_4": "Legacy model",
-      "gpt_4o": "Best for complex tasks"
+      "gpt_4o": "Best for complex tasks",
+      "o1_preview": "Uses advanced reasoning",
+      "o1_mini": "Faster at reasoning"
     },
     "openai_web": {
       "gpt_3_5": "Faster for everyday tasks",
       "gpt_4": "Legacy model",
-      "gpt_4o": "Best for complex tasks"
+      "gpt_4o": "Best for complex tasks",
+      "o1_preview": "Uses advanced reasoning",
+      "o1_mini": "Faster at reasoning"
     }
   },
   "sources": {
