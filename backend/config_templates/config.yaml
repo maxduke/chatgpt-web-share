@@ -17,10 +17,14 @@ openai_web:
   - gpt_3_5
   - gpt_4
   - gpt_4o
+  - o1_preview
+  - o1_mini
   model_code_mapping:
     gpt_3_5: gpt-4o-mini
     gpt_4: gpt-4
     gpt_4o: gpt-4o
+    o1_preview: o1-preview
+    o1_mini: o1-mini
   file_upload_strategy: browser_upload_only
   max_completion_concurrency: 1
   disable_uploading: false
@@ -34,12 +38,16 @@ openai_api:
   - gpt_3_5
   - gpt_4
   - gpt_4o
+  - o1_preview
+  - o1_mini
   - claude_3_haiku
   - claude_3_5_sonnet
   model_code_mapping:
     gpt_3_5: gpt-4o-mini
     gpt_4: gpt-4
     gpt_4o: gpt-4o
+    o1_preview: o1-preview
+    o1_mini: o1-mini
     claude_3_haiku: anthropic/claude-3-haiku
     claude_3_5_sonnet: anthropic/claude-3.5-sonnet
 common:

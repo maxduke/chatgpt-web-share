@@ -12,7 +12,9 @@ _TYPE_CHECKING = False
 default_openai_web_model_code_mapping = {
     "gpt_3_5": "gpt-4o-mini",
     "gpt_4": "gpt-4",
-    "gpt_4o": "gpt-4o"
+    "gpt_4o": "gpt-4o",
+    "o1_preview": "o1-preview",
+    "o1_mini": "o1-mini"
 }
 
 
@@ -77,7 +79,7 @@ class OpenaiWebChatGPTSetting(BaseModel):
     sync_conversations_on_startup: bool = False
     sync_conversations_schedule: bool = False
     sync_conversations_schedule_interval_hours: int = Field(12, ge=1)
-    enabled_models: list[OpenaiWebChatModels] = ["gpt_3_5", "gpt_4", "gpt_4o"]
+    enabled_models: list[OpenaiWebChatModels] = ["gpt_3_5", "gpt_4", "gpt_4o","o1_preview","o1_mini"]
     model_code_mapping: dict[OpenaiWebChatModels, str] = default_openai_web_model_code_mapping
     file_upload_strategy: OpenaiWebFileUploadStrategyOption = OpenaiWebFileUploadStrategyOption.browser_upload_only
     max_completion_concurrency: int = Field(1, ge=1)
@@ -115,11 +117,13 @@ class OpenaiApiSetting(BaseModel):
     proxy: Optional[str] = None
     connect_timeout: int = Field(10, ge=1)
     read_timeout: int = Field(20, ge=1)
-    enabled_models: list[OpenaiApiChatModels] = ["gpt_3_5", "gpt_4", "gpt_4o", "claude_3_haiku", "claude_3_5_sonnet"]
+    enabled_models: list[OpenaiApiChatModels] = ["gpt_3_5", "gpt_4", "gpt_4o","o1_preview","o1_mini", "claude_3_haiku", "claude_3_5_sonnet"]
     model_code_mapping: dict[OpenaiApiChatModels, str] = {
         "gpt_3_5": "gpt-4o-mini",
         "gpt_4": "gpt-4",
         "gpt_4o": "gpt-4o",
+        "o1_preview": "o1-preview",
+        "o1_mini": "o1-mini",
         "claude_3_haiku": "anthropic/claude-3-haiku",
         "claude_3_5_sonnet": "anthropic/claude-3.5-sonnet"
     }

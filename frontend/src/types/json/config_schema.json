@@ -147,7 +147,9 @@
       "enum": [
         "gpt_3_5",
         "gpt_4",
-        "gpt_4o"
+        "gpt_4o",
+        "o1_preview",
+        "o1_mini"
       ],
       "title": "OpenaiApiChatModels",
       "type": "string"
@@ -192,7 +194,9 @@
           "default": [
             "gpt_3_5",
             "gpt_4",
-            "gpt_4o"
+            "gpt_4o",
+            "o1_preview",
+            "o1_mini"
           ],
           "items": {
             "$ref": "#/$defs/OpenaiApiChatModels"
@@ -208,6 +212,8 @@
             "gpt_3_5": "gpt-4o-mini",
             "gpt_4": "gpt-4",
             "gpt_4o": "gpt-4o",
+            "o1_preview": "o1-preview",
+            "o1_mini": "o1-mini",
             "claude_3_haiku": "claude-3-haiku",
             "claude_3_5_sonnet": "claude-3.5-sonnet"
           },
@@ -333,7 +339,9 @@
           "default": [
             "gpt_3_5",
             "gpt_4",
-            "gpt_4o"
+            "gpt_4o",
+            "o1_preview",
+            "o1_mini"
           ],
           "items": {
             "$ref": "#/$defs/OpenaiWebChatModels"
@@ -348,7 +356,9 @@
           "default": {
             "gpt_3_5": "gpt-4o-mini",
             "gpt_4": "gpt-4",
-            "gpt_4o": "gpt-4o"
+            "gpt_4o": "gpt-4o",
+            "o1_preview": "o1-preview",
+            "o1_mini": "o1-mini"
           },
           "title": "Model Code Mapping",
           "type": "object"
@@ -380,7 +390,9 @@
       "enum": [
         "gpt_3_5",
         "gpt_4",
-        "gpt_4o"
+        "gpt_4o",
+        "o1_preview",
+        "o1_mini"
       ],
       "title": "OpenaiWebChatModels",
       "type": "string"
@@ -446,12 +458,16 @@
         "enabled_models": [
           "gpt_3_5",
           "gpt_4",
-          "gpt_4o"
+          "gpt_4o",
+          "o1_preview",
+          "o1_mini"
         ],
         "model_code_mapping": {
           "gpt_3_5": "gpt-4o-mini",
           "gpt_4": "gpt-4",
-          "gpt_4o": "gpt-4o"
+          "gpt_4o": "gpt-4o",
+          "o1_preview": "o1-preview",
+          "o1_mini": "o1-mini"
         },
         "file_upload_strategy": "browser_upload_only",
         "max_completion_concurrency": 1,
@@ -473,11 +489,16 @@
         "enabled_models": [
           "gpt_3_5",
           "gpt_4",
-          "gpt_4o"
+          "gpt_4o",
+          "o1_preview",
+          "o1_mini"
         ],
         "model_code_mapping": {
           "gpt_3_5": "gpt-4o-mini",
           "gpt_4": "gpt-4",
+          "gpt_4o": "gpt-4o",
+          "o1_preview": "o1-preview",
+          "o1_mini": "o1-mini"
           "gpt_4o": "gpt-4o",
           "claude_3_haiku": "claude-3-haiku",
           "claude_3_5_sonnet": "claude-3.5-sonnet"

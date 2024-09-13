@@ -23,7 +23,9 @@ const t = i18n.global.t as any;
 export const chatModelColorMap: Record<string, string> = {
   gpt_3_5: 'green',
   gpt_4: 'purple',
-  gpt_4o: 'darkpurple'
+  gpt_4o: 'darkpurple',
+  o1_preview: "darkred",
+  o1_mini: "red"
 };
 
 export const getChatModelColor = (model_name: OpenaiWebChatModels | OpenaiApiChatModels | string | null) => {
