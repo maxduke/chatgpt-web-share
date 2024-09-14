@@ -3,7 +3,7 @@
     <n-collapse @update:expanded-names="handleExpand">
       <n-collapse-item :title="$t('commons.serverStatus')" name="serverStatus">
         <n-list hoverable show-divider>
-          <n-list-item>
+          <!-- <n-list-item>
             <div class="flex flex-row justify-between content-center">
               <div>
                 <n-icon class="mr-1">
@@ -32,7 +32,7 @@
               </div>
               <div>{{ serverStatus.active_user_in_1d }}</div>
             </div>
-          </n-list-item>
+          </n-list-item> -->
           <n-list-item>
             <div class="flex flex-row justify-between content-center">
               <div>
@@ -53,7 +53,7 @@
               <div>{{ serverStatus.chatbot_waiting_count }}</div>
             </div>
           </n-list-item>
-          <n-list-item>
+          <!-- <n-list-item>
             <div class="flex flex-row justify-between content-center">
               <div>
                 <n-icon class="mr-1">
@@ -62,7 +62,7 @@
               </div>
               <div>{{ serverStatus.gpt4_count_in_3_hours }}</div>
             </div>
-          </n-list-item>
+          </n-list-item> -->
         </n-list>
       </n-collapse-item>
     </n-collapse>
