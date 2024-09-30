@@ -160,8 +160,7 @@ const columns: DataTableColumns<UserReadAdmin> = [
     key: 'valid_until',
     render(row) {
       return row.setting.openai_web.valid_until ? new Date(row.setting.openai_web.valid_until).toLocaleString() : t('commons.unlimited');
-    },
-    sorter: getDateStringSorter<UserReadAdmin>('valid_until'),
+    }
   },
   {
     title: `${t('labels.max_conv_count')}`,
