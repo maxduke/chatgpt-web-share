@@ -156,6 +156,14 @@ const columns: DataTableColumns<UserReadAdmin> = [
     sorter: getDateStringSorter<UserReadAdmin>('last_active_time'),
   },
   {
+    title: t('labels.valid_until'),
+    key: 'valid_until',
+    render(row) {
+      return row.setting.openai_web.valid_until ? new Date(row.setting.openai_web.valid_until).toLocaleString() : t('commons.unlimited');
+    },
+    sorter: getDateStringSorter<UserReadAdmin>('valid_until'),
+  },
+  {
     title: `${t('labels.max_conv_count')}`,
     key: 'ask_count_limits',
     render(row) {

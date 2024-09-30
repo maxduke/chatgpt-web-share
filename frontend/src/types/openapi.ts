@@ -1966,6 +1966,8 @@ export interface components {
       nickname: string;
       /** Last Active Time */
       last_active_time: string | null;
+      /** Valid Until */
+      valid_until: string | null;
       /**
        * Create Time
        * Format: date-time
