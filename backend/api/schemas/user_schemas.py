@@ -56,7 +56,7 @@ class OpenaiWebSourceSettingSchema(BaseSourceSettingSchema):
     @staticmethod
     def default():
         default_models = [OpenaiWebChatModels(m) for m in
-                          ["gpt_3_5", "gpt_4", "gpt_4o", "o1_preview", "o1_mini"]]
+                          ["gpt_3_5", "gpt_4", "gpt_4o", "o1", "o1_mini"]]
         return OpenaiWebSourceSettingSchema(
             available_models=[m for m in default_models if m in config.openai_web.enabled_models],
             per_model_ask_count=OpenaiWebPerModelAskCount(),
@@ -95,7 +95,7 @@ class OpenaiApiSourceSettingSchema(BaseSourceSettingSchema):
 
     @staticmethod
     def default():
-        default_models = [OpenaiApiChatModels(m) for m in ["gpt_3_5", "gpt_4", "gpt_4o", "o1_preview", "o1_mini", "claude_3_haiku", "claude_3_5_sonnet"]]
+        default_models = [OpenaiApiChatModels(m) for m in ["gpt_3_5", "gpt_4", "gpt_4o", "o1", "o1_mini", "claude_3_haiku", "claude_3_5_sonnet"]]
         return OpenaiApiSourceSettingSchema(
             available_models=[m for m in default_models if m in config.openai_api.enabled_models],
             per_model_ask_count=OpenaiApiPerModelAskCount(),

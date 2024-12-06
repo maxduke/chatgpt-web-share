@@ -351,7 +351,7 @@
     "gpt_3_5": "GPT-4o mini",
     "gpt_4": "GPT-4",
     "gpt_4o": "GPT-4o",
-    "o1_preview": "o1-preview",
+    "o1": "o1",
     "o1_mini": "o1-mini",
     "claude_3_haiku": "Claude-3-haiku",
     "claude_3_5_sonnet": "Claude-3.5-sonnet"
@@ -361,7 +361,7 @@
       "gpt_3_5": "Faster for everyday tasks",
       "gpt_4": "Legacy model",
       "gpt_4o": "Best for complex tasks",
-      "o1_preview": "Uses advanced reasoning",
+      "o1": "Uses advanced reasoning",
       "o1_mini": "Faster at reasoning",
       "claude_3_haiku": "Faster for lightweight actions",
       "claude_3_5_sonnet": "Best for complex tasks"
@@ -370,7 +370,7 @@
       "gpt_3_5": "Faster for everyday tasks",
       "gpt_4": "Legacy model",
       "gpt_4o": "Best for complex tasks",
-      "o1_preview": "Uses advanced reasoning",
+      "o1": "Uses advanced reasoning",
       "o1_mini": "Faster at reasoning"
     }
   },
