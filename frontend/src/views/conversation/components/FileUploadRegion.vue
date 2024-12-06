@@ -66,7 +66,6 @@
       :trigger-style="{ width: '100%' }"
       :disabled="props.disabled"
       :custom-request="customRequest"
-      :accept="acceptedMimeTypes.join(',')"
       :on-before-upload="checkFileBeforeUpload"
       :max="10"
     >
@@ -97,7 +96,6 @@
       :show-retry-button="true"
       :on-remove="removeFile"
       list-type="image"
-      :accept="acceptedMimeTypes.join(',')"
       :on-before-upload="checkFileBeforeUpload"
       :max="10"
     >
