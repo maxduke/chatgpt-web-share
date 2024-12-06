@@ -523,14 +523,14 @@ export interface components {
        *     "gpt_3_5",
        *     "gpt_4",
        *     "gpt_4o"，
-       *     "o1_preview",
+       *     "o1",
        *     "o1_mini"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
        *     "gpt_4o": "gpt-4o",
-       *     "o1_preview": "o1-preview",
+       *     "o1": "o1",
        *     "o1_mini": "o1-mini"
        *   },
        *   "file_upload_strategy": "browser_upload_only",
@@ -549,14 +549,14 @@ export interface components {
        *     "gpt_3_5",
        *     "gpt_4",
        *     "gpt_4o"，
-       *     "o1_preview",
+       *     "o1",
        *     "o1_mini"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
        *     "gpt_4o": "gpt-4o",
-       *     "o1_preview": "o1-preview",
+       *     "o1": "o1",
        *     "o1_mini": "o1-mini"
        *   }
        * }
@@ -639,14 +639,14 @@ export interface components {
        *     "gpt_3_5",
        *     "gpt_4",
        *     "gpt_4o"，
-       *     "o1_preview",
+       *     "o1",
        *     "o1_mini"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
        *     "gpt_4o": "gpt-4o",
-       *     "o1_preview": "o1-preview",
+       *     "o1": "o1",
        *     "o1_mini": "o1-mini"
        *   },
        *   "file_upload_strategy": "browser_upload_only",
@@ -665,14 +665,14 @@ export interface components {
        *     "gpt_3_5",
        *     "gpt_4",
        *     "gpt_4o"，
-       *     "o1_preview",
+       *     "o1",
        *     "o1_mini"
        *   ],
        *   "model_code_mapping": {
        *     "gpt_3_5": "gpt-4o-mini",
        *     "gpt_4": "gpt-4",
        *     "gpt_4o": "gpt-4o",
-       *     "o1_preview": "o1-preview",
+       *     "o1": "o1",
        *     "o1_mini": "o1-mini"
        *   }
        * }
@@ -994,7 +994,7 @@ export interface components {
      *   "gpt_3_5": 0,
      *   "gpt_4": 0,
      *   "gpt_4o": 0,
-     *   "o1_preview": 0,
+     *   "o1": 0,
      *   "o1_mini": 0
      * }
      */
@@ -1031,7 +1031,7 @@ export interface components {
        *   "gpt_3_5",
        *   "gpt_4",
        *   "gpt_4o"，
-       *   "o1_preview",
+       *   "o1",
        *   "o1_mini"
        * ]
        */
@@ -1042,7 +1042,7 @@ export interface components {
        *   "gpt_3_5": "gpt-4o-mini",
        *   "gpt_4": "gpt-4",
        *   "gpt_4o": "gpt-4o",
-       *   "o1_preview": "o1-preview",
+       *   "o1": "o1",
        *   "o1_mini": "o1-mini"
        * }
        */
@@ -1296,7 +1296,7 @@ export interface components {
        *   "gpt_3_5",
        *   "gpt_4",
        *   "gpt_4o"，
-       *   "o1_preview",
+       *   "o1",
        *   "o1_mini"
        * ]
        */
@@ -1307,7 +1307,7 @@ export interface components {
        *   "gpt_3_5": "gpt-4o-mini",
        *   "gpt_4": "gpt-4",
        *   "gpt_4o": "gpt-4o",
-       *   "o1_preview": "o1-preview",
+       *   "o1": "o1",
        *   "o1_mini": "o1-mini"
        * }
        */
@@ -1612,7 +1612,7 @@ export interface components {
      * OpenaiWebChatModels
      * @enum {string}
      */
-    OpenaiWebChatModels: "gpt_3_5" | "gpt_4" | "gpt_4o" | "o1_preview" | "o1_mini";
+    OpenaiWebChatModels: "gpt_3_5" | "gpt_4" | "gpt_4o" | "o1" | "o1_mini";
     /**
      * OpenaiWebChatStatus
      * @enum {string}
@@ -1716,7 +1716,7 @@ export interface components {
      *   "gpt_3_5": 0,
      *   "gpt_4": 0,
      *   "gpt_4o": 0,
-     *   "o1_preview": 0,
+     *   "o1": 0,
      *   "o1_mini": 0
      * }
      */
