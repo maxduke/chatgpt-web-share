@@ -26,7 +26,7 @@
                               "gpt_3_5",
                               "gpt_4",
                               "gpt_4o",
-                              "o1_preview",
+                              "o1",
                               "o1_mini"
                             ],
                             "title": "OpenaiWebChatModels"
@@ -51,7 +51,7 @@
                               "gpt_3_5",
                               "gpt_4",
                               "gpt_4o",
-                              "o1_preview",
+                              "o1",
                               "o1_mini"
                             ],
                             "title": "OpenaiApiChatModels"
@@ -161,7 +161,7 @@
                       "gpt_3_5",
                       "gpt_4",
                       "gpt_4o",
-                      "o1_preview",
+                      "o1",
                       "o1_mini"
                     ],
                     "title": "OpenaiWebChatModels"
@@ -186,7 +186,7 @@
                       "gpt_3_5",
                       "gpt_4",
                       "gpt_4o",
-                      "o1_preview",
+                      "o1",
                       "o1_mini"
                     ],
                     "title": "OpenaiApiChatModels"
@@ -255,7 +255,7 @@
                   "gpt_3_5",
                   "gpt_4",
                   "gpt_4o",
-                  "o1_preview",
+                  "o1",
                   "o1_mini"
                 ],
                 "title": "OpenaiWebChatModels"
@@ -280,7 +280,7 @@
                   "gpt_3_5",
                   "gpt_4",
                   "gpt_4o",
-                  "o1_preview",
+                  "o1",
                   "o1_mini"
                 ],
                 "title": "OpenaiApiChatModels"
@@ -5890,7 +5890,7 @@
                     "gpt_3_5",
                     "gpt_4",
                     "gpt_4o",
-                    "o1_preview",
+                    "o1",
                     "o1_mini"
                   ],
                   "title": "OpenaiWebChatModels"
@@ -5901,7 +5901,7 @@
                   "gpt_3_5",
                   "gpt_4",
                   "gpt_4o",
-                  "o1_preview",
+                  "o1",
                   "o1_mini"
                 ]
               },
@@ -5915,7 +5915,7 @@
                   "gpt_3_5": "gpt-4o-mini",
                   "gpt_4": "gpt-4",
                   "gpt_4o": "gpt-4o",
-                  "o1_preview": "o1-preview",
+                  "o1": "o1",
                   "o1_mini": "o1-mini"
                 }
               },
@@ -5963,14 +5963,14 @@
             "gpt_3_5",
             "gpt_4",
             "gpt_4o",
-            "o1_preview",
+            "o1",
             "o1_mini"
           ],
           "model_code_mapping": {
             "gpt_3_5": "gpt-4o-mini",
             "gpt_4": "gpt-4",
             "gpt_4o": "gpt-4o",
-            "o1_preview": "o1-preview",
+            "o1": "o1",
             "o1_mini": "o1-mini"
           },
           "file_upload_strategy": "browser_upload_only",
@@ -6022,7 +6022,7 @@
                     "gpt_3_5",
                     "gpt_4",
                     "gpt_4o",
-                    "o1_preview",
+                    "o1",
                     "o1_mini"
                   ],
                   "title": "OpenaiApiChatModels"
@@ -6033,7 +6033,7 @@
                   "gpt_3_5",
                   "gpt_4",
                   "gpt_4o",
-                  "o1_preview",
+                  "o1",
                   "o1_mini"
                 ]
               },
@@ -6047,7 +6047,7 @@
                   "gpt_3_5": "gpt-4o-mini",
                   "gpt_4": "gpt-4",
                   "gpt_4o":"gpt-4o",
-                  "o1_preview": "o1-preview",
+                  "o1": "o1",
                   "o1_mini": "o1-mini"
                 }
               }
@@ -6065,14 +6065,14 @@
             "gpt_3_5",
             "gpt_4",
             "gpt_4o",
-            "o1_preview",
+            "o1",
             "o1_mini"
           ],
           "model_code_mapping": {
             "gpt_3_5": "gpt-4o-mini",
             "gpt_4": "gpt-4",
             "gpt_4o":"gpt-4o",
-            "o1_preview": "o1-preview",
+            "o1": "o1",
             "o1_mini": "o1-mini"
           }
         }
@@ -6432,7 +6432,7 @@
                     "gpt_3_5",
                     "gpt_4",
                     "gpt_4o",
-                    "o1_preview",
+                    "o1",
                     "o1_mini"
                   ],
                   "title": "OpenaiWebChatModels"
@@ -6443,7 +6443,7 @@
                   "gpt_3_5",
                   "gpt_4",
                   "gpt_4o",
-                  "o1_preview",
+                  "o1",
                   "o1_mini"
                 ]
               },
@@ -6457,7 +6457,7 @@
                   "gpt_3_5": "gpt-4o-mini",
                   "gpt_4": "gpt-4",                  
                   "gpt_4o": "gpt-4o",
-                  "o1_preview": "o1-preview",
+                  "o1": "o1",
                   "o1_mini": "o1-mini"
                 }
               },
@@ -6505,14 +6505,14 @@
             "gpt_3_5",
             "gpt_4",
             "gpt_4o",
-            "o1_preview",
+            "o1",
             "o1_mini"
           ],
           "model_code_mapping": {
             "gpt_3_5": "gpt-4o-mini",
             "gpt_4": "gpt-4",
             "gpt_4o": "gpt-4o",
-            "o1_preview": "o1-preview",
+            "o1": "o1",
             "o1_mini": "o1-mini"
           },
           "file_upload_strategy": "browser_upload_only",
@@ -6564,7 +6564,7 @@
                     "gpt_3_5",
                     "gpt_4",
                     "gpt_4o",
-                    "o1_preview",
+                    "o1",
                     "o1_mini"
                   ],
                   "title": "OpenaiApiChatModels"
@@ -6575,7 +6575,7 @@
                   "gpt_3_5",
                   "gpt_4",
                   "gpt_4o",
-                  "o1_preview",
+                  "o1",
                   "o1_mini"
                 ]
               },
@@ -6589,7 +6589,7 @@
                   "gpt_3_5": "gpt-4o-mini",
                   "gpt_4": "gpt-4",
                   "gpt_4o":"gpt-4o",
-                  "o1_preview": "o1-preview",
+                  "o1": "o1",
                   "o1_mini": "o1-mini"
                 }
               }
@@ -6607,14 +6607,14 @@
             "gpt_3_5",
             "gpt_4",
             "gpt_4o",
-            "o1_preview",
+            "o1",
             "o1_mini"
           ],
           "model_code_mapping": {
             "gpt_3_5": "gpt-4o-mini",
             "gpt_4": "gpt-4",
             "gpt_4o":"gpt-4o",
-            "o1_preview": "o1-preview",
+            "o1": "o1",
             "o1_mini": "o1-mini"
           }
         }
@@ -7092,7 +7092,7 @@
           "gpt_3_5",
           "gpt_4",
           "gpt_4o",
-          "o1_preview",
+          "o1",
           "o1_mini"
         ],
         "title": "OpenaiApiChatModels"
@@ -8051,7 +8051,7 @@
       "gpt_3_5",
       "gpt_4",
       "gpt_4o",
-      "o1_preview",
+      "o1",
       "o1_mini"
     ],
     "title": "OpenaiApiChatModels"
@@ -9206,7 +9206,7 @@
       "gpt_3_5": 0,
       "gpt_4": 0,
       "gpt_4o": 0,
-      "o1_preview": 0,
+      "o1": 0,
       "o1_mini": 0
     }
   },
@@ -9252,7 +9252,7 @@
             "gpt_3_5",
             "gpt_4",
             "gpt_4o",
-            "o1_preview",
+            "o1",
             "o1_mini"
           ],
           "title": "OpenaiApiChatModels"
@@ -9263,7 +9263,7 @@
           "gpt_3_5",
           "gpt_4",
           "gpt_4o",
-          "o1_preview",
+          "o1",
           "o1_mini"
         ]
       },
@@ -9277,7 +9277,7 @@
           "gpt_3_5": "gpt-4o-mini",
           "gpt_4": "gpt-4",
           "gpt_4o":"gpt-4o",
-          "o1_preview": "o1-preview",
+          "o1": "o1",
           "o1_mini": "o1-mini"
         }
       }
@@ -9368,7 +9368,7 @@
             "gpt_3_5",
             "gpt_4",
             "gpt_4o",
-            "o1_preview",
+            "o1",
             "o1_mini"
           ],
           "title": "OpenaiApiChatModels"
@@ -9386,7 +9386,7 @@
           "gpt_3_5": 0,
           "gpt_4": 0,
           "gpt_4o": 0,
-          "o1_preview": 0,
+          "o1": 0,
           "o1_mini": 0
         }
       },
@@ -10935,7 +10935,7 @@
           "gpt_3_5",
           "gpt_4",
           "gpt_4o",
-          "o1_preview",
+          "o1",
           "o1_mini"
         ],
         "title": "OpenaiWebChatModels"
@@ -11061,7 +11061,7 @@
             "gpt_3_5",
             "gpt_4",
             "gpt_4o",
-            "o1_preview",
+            "o1",
             "o1_mini"
           ],
           "title": "OpenaiWebChatModels"
@@ -11072,7 +11072,7 @@
           "gpt_3_5",
           "gpt_4",
           "gpt_4o",
-          "o1_preview",
+          "o1",
           "o1_mini"
         ]
       },
@@ -11086,7 +11086,7 @@
           "gpt_3_5": "gpt-4o-mini",
           "gpt_4": "gpt-4",          
           "gpt_4o": "gpt-4o",
-          "o1_preview": "o1-preview",
+          "o1": "o1",
           "o1_mini": "o1-mini"
         }
       },
@@ -14286,7 +14286,7 @@
       "gpt_3_5",
       "gpt_4",
       "gpt_4o",
-      "o1_preview",
+      "o1",
       "o1_mini"
     ],
     "title": "OpenaiWebChatModels"
@@ -15863,7 +15863,7 @@
       "gpt_3_5": 0,
       "gpt_4": 0,
       "gpt_4o": 0,
-      "o1_preview": 0,
+      "o1": 0,
       "o1_mini": 0
     }
   },
@@ -15950,7 +15950,7 @@
             "gpt_3_5",
             "gpt_4",
             "gpt_4o",
-            "o1_preview",
+            "o1",
             "o1_mini"
           ],
           "title": "OpenaiWebChatModels"
@@ -15968,7 +15968,7 @@
           "gpt_3_5": 0,
           "gpt_4": 0,
           "gpt_4o": 0,
-          "o1_preview": 0,
+          "o1": 0,
           "o1_mini": 0
         }
       },
@@ -16945,7 +16945,7 @@
                     "gpt_3_5",
                     "gpt_4",
                     "gpt_4o",
-                    "o1_preview",
+                    "o1",
                     "o1_mini"
                   ],
                   "title": "OpenaiWebChatModels"
@@ -16963,7 +16963,7 @@
                   "gpt_3_5": 0,
                   "gpt_4": 0,
                   "gpt_4o": 0,
-                  "o1_preview": 0,
+                  "o1": 0,
                   "o1_mini": 0
                 }
               },
@@ -17073,7 +17073,7 @@
                     "gpt_3_5",
                     "gpt_4",
                     "gpt_4o",
-                    "o1_preview",
+                    "o1",
                     "o1_mini"
                   ],
                   "title": "OpenaiApiChatModels"
@@ -17091,7 +17091,7 @@
                   "gpt_3_5": 0,
                   "gpt_4": 0,
                   "gpt_4o": 0,
-                  "o1_preview": 0,
+                  "o1": 0,
                   "o1_mini": 0
                 }
               },
@@ -17347,7 +17347,7 @@
                     "gpt_3_5",
                     "gpt_4",
                     "gpt_4o",
-                    "o1_preview",
+                    "o1",
                     "o1_mini"
                   ],
                   "title": "OpenaiWebChatModels"
@@ -17365,7 +17365,7 @@
                   "gpt_3_5": 0,
                   "gpt_4": 0,
                   "gpt_4o": 0,
-                  "o1_preview": 0,
+                  "o1": 0,
                   "o1_mini": 0
                 }
               },
@@ -17475,7 +17475,7 @@
                     "gpt_3_5",
                     "gpt_4",
                     "gpt_4o",
-                    "o1_preview",
+                    "o1",
                     "o1_mini"
                   ],
                   "title": "OpenaiApiChatModels"
@@ -17493,7 +17493,7 @@
                   "gpt_3_5": 0,
                   "gpt_4": 0,
                   "gpt_4o": 0,
-                  "o1_preview": 0,
+                  "o1": 0,
                   "o1_mini": 0
                 }
               },
@@ -17701,7 +17701,7 @@
                 "gpt_3_5",
                 "gpt_4",
                 "gpt_4o",
-                "o1_preview",
+                "o1",
                 "o1_mini"
               ],
               "title": "OpenaiWebChatModels"
@@ -17719,7 +17719,7 @@
               "gpt_3_5": 0,
               "gpt_4": 0,
               "gpt_4o": 0,
-              "o1_preview": 0,
+              "o1": 0,
               "o1_mini": 0
             }
           },
@@ -17829,7 +17829,7 @@
                 "gpt_3_5",
                 "gpt_4",
                 "gpt_4o",
-                "o1_preview",
+                "o1",
                 "o1_mini"
               ],
               "title": "OpenaiApiChatModels"
@@ -17847,7 +17847,7 @@
               "gpt_3_5": 0,
               "gpt_4": 0,
               "gpt_4o": 0,
-              "o1_preview": 0,
+              "o1": 0,
               "o1_mini": 0
             }
           },
@@ -18028,7 +18028,7 @@
                 "gpt_3_5",
                 "gpt_4",
                 "gpt_4o",
-                "o1_preview",
+                "o1",
                 "o1_mini"
               ],
               "title": "OpenaiWebChatModels"
@@ -18046,7 +18046,7 @@
               "gpt_3_5": 0,
               "gpt_4": 0,
               "gpt_4o": 0,
-              "o1_preview": 0,
+              "o1": 0,
               "o1_mini": 0
             }
           },
@@ -18156,7 +18156,7 @@
                 "gpt_3_5",
                 "gpt_4",
                 "gpt_4o",
-                "o1_preview",
+                "o1",
                 "o1_mini"
               ],
               "title": "OpenaiApiChatModels"
@@ -18174,7 +18174,7 @@
               "gpt_3_5": 0,
               "gpt_4": 0,
               "gpt_4o": 0,
-              "o1_preview": 0,
+              "o1": 0,
               "o1_mini": 0
             }
           },
